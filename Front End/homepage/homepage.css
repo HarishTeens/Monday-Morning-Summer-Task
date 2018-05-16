@@ -73,9 +73,8 @@ form{
 	font-size: 3em;	
 }
 .sidebar{
-	position: fixed;
-	position: fixed;
-	top: 40%;
+	position: fixed;	
+	top: 50%;
 }
 .sidebar>h3{
 	background: #0984e3;
@@ -85,3 +84,4 @@ form{
 .sidebar>h3>a{
 	color: #2d3436;
 }
+

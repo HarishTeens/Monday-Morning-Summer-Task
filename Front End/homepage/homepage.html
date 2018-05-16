@@ -3,6 +3,7 @@
 <head>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 	<link rel="shortcut icon" type="image/png" href="../assets/img/favicon.png">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
 	<link rel="stylesheet" type="text/css" href="homepage.css">
 	<title>Monday Morning - The official student media body of NIT Rourkela</title>
 </head>
@@ -39,12 +40,34 @@
 
 <!-- Sidebar  -->
 <div class="sidebar">
-	<h3><a href="#">Ask a Question</a></h3>
-	<a href="#"><i class="fa fa-info-circle" id="info-button"></i></a>	
-	<h3><a href="#">Forum</a></h3>
+		<a href="#costumModal13" role="button" class="btn btn-default" data-toggle="modal">
+            <i class="fa fa-info-circle" id="info-button"></i>
+        </a>
 </div>
+        <div id="costumModal13" class="modal" data-easein="bounceLeftIn"  tabindex="-1" role="dialog" aria-labelledby="costumModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">                        
+                        <h4 class="modal-title">
+                            <a href="#">Ask a Question</a>
+                        </h4>                        
+                    </div>
+                </div>
+            </div>
+             <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">                                                
+                        <h4 class="modal-title">
+                        	<a href="#">Forum</a>
+                        </h4>
+                    </div>
+                </div>
+            </div>
+        </div>
 
 
+
+       
 
 
 
@@ -55,6 +78,9 @@
 
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>  
 <script type="text/javascript" src="../assets/js/fontawesome-all.min.js"></script>
+<script src='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/velocity/1.2.2/velocity.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/velocity/1.2.2/velocity.ui.min.js'></script>
 <script  src="../assets/js/index.js"></script>
 </body>
 </html>
