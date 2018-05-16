@@ -1,0 +1,12 @@
+body{
+	background:url('../assets/img/landing.jpg');
+}
+.heading{    
+    text-align: center;        
+    padding-top: 15%; 
+}
+button>a:hover{
+	text-decoration: none;
+	color: #fff;
+}
+

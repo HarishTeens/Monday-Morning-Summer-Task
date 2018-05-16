@@ -1,0 +1,95 @@
+/* This file will be used by our Editor and the simulation to display the static text as well as by TinyMCE */
+
+/* Used by TinyMCE */
+body.mce-content-body {
+	float: left;
+	background: transparent;
+	padding-bottom: 0 !important;
+	margin: 0;
+	padding: 0 !important;
+	overflow: hidden;
+}
+
+
+body.mce-content-body {
+	font-family: arial, sans-serif;
+}
+
+/* Set default font size */
+body.mce-content-body, body.mce-content-body > *, .default-text2-container, .default-text2-container > * {
+	font-size: 14px;
+	color: black;
+}
+
+*::selection {
+	background: none repeat scroll 0 0 rgb(255, 245, 146);
+}
+
+*::-moz-selection {
+	background: none repeat scroll 0 0 rgb(255, 245, 146);
+}
+
+/* Selector `:not([data-mce-href])` means, not in the TinyMCE Body because the selector `body:not(.mce-content-body) a` does not seams to work. */
+p, span, a, strong, em, ul, ol {
+	color: inherit;
+	font-size: inherit;
+	font-style: inherit;
+	font-weight: inherit;
+	text-decoration: inherit;
+	line-height: normal;
+	margin: 0;
+	display: inline-block;
+	
+	/* Better displayed in the palette (custom stencil) and screenflow */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+span {
+	display: inline-block;
+}
+
+ul, ol {
+	display: table;
+	padding: 0 0 0 20px;
+}
+
+ul {
+	list-style-type: disc;
+}
+
+ol {
+	list-style-type: decimal;
+}
+
+a {
+	cursor: text;
+}
+
+.mce-content-body.fixed {
+	width: 100%;
+}
+
+.mce-content-body.fixed p{
+	max-width: 100%;
+}
+
+.bold, strong {
+	font-weight: bold;
+}
+
+.italic, em {
+	font-style:italic;
+}
+
+.underline {
+	text-decoration: underline;
+}
+
+a.underline {
+	text-decoration: none;
+}
+
+.mce-item-anchor {
+	display: none;
+}

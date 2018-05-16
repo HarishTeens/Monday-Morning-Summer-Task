@@ -1,0 +1,166 @@
+/*
+ * Basic Colors
+ 
+ * NOTE: check StencilHelper as well when chaning or adding colors
+ */
+	/* blue */
+	.stroke-blue {
+		stroke: #2D76C2;
+	}
+	.selectedElement .stroke-blue {
+		stroke: #235C96;
+	}
+	.fill-blue {
+		fill: #658cd9;
+	}
+/*	.selectedElement .fill-blue {
+		fill: #235C96;
+	}
+*/	
+	
+
+	.fill-commentInactive {
+		fill: #d9d9d9;
+	}
+
+	/* green */
+	.stroke-green {
+		stroke: #758211;
+	}
+	.selectedElement .stroke-green {
+		stroke: #b1c51a;
+	}
+	.fill-green {
+		fill: #b1c51a;
+	}
+/*	.selectedElement .fill-green {
+		fill: #b1c51a;
+	}
+*/	
+
+	/* red */
+	.stroke-red {
+		stroke: #920E05;
+	}
+	.selectedElement .stroke-red {
+		stroke: #A43E36;
+	}
+	.fill-red {
+		fill: #d96666;
+	}
+/*	.selectedElement .fill-red {
+		fill: #A43E36;
+	}
+*/	
+
+
+	/* orange */
+	.stroke-orange {
+		stroke: #f2a63f;
+	}
+	.selectedElement .stroke-orange {
+		stroke: #ee8800;
+	}
+	
+	.fill-orange {
+		fill: #f2a63f;
+	}
+	
+	/* grey */
+	.fill-grey {
+		fill: #C1C1C1;
+	}
+	
+	/* lightgrey */
+	.fill-lightgrey {
+		fill: #d9d9d9;
+	}
+
+	/* olive */
+	.stroke-olive {
+		stroke: #a7a77c;
+	}
+	.selectedElement .stroke-olive {
+		stroke: #a7a77c;
+	}
+	.fill-olive {
+		fill: #a7a77c;
+	}
+	
+	/* yellow */
+	.stroke-yellow {
+		stroke: #FFFFCC;
+	}
+	.selectedElement .stroke-yellow {
+		stroke: #FFFFCC;
+	}
+	.fill-yellow {
+		fill: #FFFFCC;
+	}
+	
+	/* black */
+	.stroke-black {
+		stroke: black;
+	}
+	.selectedElement .stroke-black {
+		stroke: #44413f;
+	}
+	.fill-black {
+		fill: black;
+	}
+/*	.selectedElement .fill-black {
+		fill: #44413f;
+	}
+*/	
+
+	/* semi transparent grey*/
+	.fill-semitransparent {
+		fill: grey;
+		opacity:0.5;
+	}
+
+
+	/* white */
+	.stroke-white {
+		stroke: white;
+	}
+	.fill-white {
+		fill: white;
+	}
+/*	.selectedElement .fill-white {
+		fill: white;
+	}
+*/	
+	
+	/* none */
+	.stroke-none {
+		stroke: none;
+	}
+	.fill-none {
+		fill: none;
+	}
+/*	.selectedElement .fill-none {
+		fill: none;
+	}
+*/	
+
+	.fill-808080 {
+		fill: #808080;
+	}
+
+	.fill-F2F2F2 {
+		fill: #F2F2F2;
+	}
+
+	.stroke-666666 {
+		stroke: #666666;
+	}
+
+	.fill-E6E6E6 {
+		fill: #E6E6E6;
+	}
+
+	.fill-4D4D4D {
+		fill: #4D4D4D;
+	}
+		

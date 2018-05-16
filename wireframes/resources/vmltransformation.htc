@@ -1,0 +1,10 @@
+<public:component tagname="svg">
+   <public:attach event="oncontentready" onevent="convert()"/>	
+</public:component>
+
+<script language="JScript">
+function convert() {
+	rabbit.vml.convert(element);
+}
+
+</script>
