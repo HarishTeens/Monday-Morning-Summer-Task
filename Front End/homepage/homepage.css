@@ -60,15 +60,7 @@ form{
 	color: inherit;
 	padding: 15px 20px;
 }
-.test{
-	transition-property: width;
-	transition-duration: 2s;
-	width: 400px;
-	height: 400px;
-}
-.test:hover{
-	width: 100px;
-}
+
 #info-button{
 	font-size: 3em;	
 }
@@ -84,4 +76,6 @@ form{
 .sidebar>h3>a{
 	color: #2d3436;
 }
-
+.carousel-inner>.item>img{
+	width: 45%;	
+}
