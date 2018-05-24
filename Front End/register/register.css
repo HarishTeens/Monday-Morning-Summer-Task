@@ -79,8 +79,8 @@ body{
 .sidebar>h3>a{
 	color: #2d3436;
 }
-.login{
-	margin: 0px 40%;
+.register{
+	margin: -50px 40%;
 	text-align: center;	width: 300px;
 }
 .form-group{

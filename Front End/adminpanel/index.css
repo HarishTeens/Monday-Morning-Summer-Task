@@ -5,13 +5,16 @@ body{
 #costumModal13{
 	z-index: 150000;
 }
+
+.active{
+	display: block!important;
+}
 #logo{
 	height: 170px;
 	width: 170px;
 	display: inline;
 	margin: 40px 50px;
-	margin-top: 0px;
-	
+	margin-top: 0px;	
 }
 #logo+h1{
 	display: inline;
@@ -79,21 +82,65 @@ body{
 .sidebar>h3>a{
 	color: #2d3436;
 }
-.login{
-	margin: 0px 40%;
-	text-align: center;	width: 300px;
+
+.sub-details{
+	display: inline-block;
 }
-.form-group{
+#page-title{
+	text-align: center;
+	font-size: 50px;
+}
+.sub-details>h4{
+	margin-top: 70px;
+}
+#part1{
+	background: #6c5ce7;
+	display: inline-block;
+	left: 0%;
+	height: 100%;
+	width: 25%;
+	position: fixed;
+}
+#part2{
+	background: #d63031;
+	display: inline-block;
+	left: 25%;
+	height: 100%;
+	width: 25%;
+	position: fixed;
+}
+#part3{
+	background: #00b894;
+	display: inline-block;
+	left: 50%;
+	height: 100%;
+	width: 25%;
+	position: fixed;
+}
+#part4{
+	background: #e84393;
+	display: inline-block;
+	left: 75%;
+	height: 100%;
+	width: 25%;
+	position: fixed;
+}
+.container{
+	margin-top: 50px;
+}
+.details>img{
+	border-radius: 50%;
+}
+.content>button{
+	width: 70%;
+	margin: 50% 15%;
+	margin-bottom: 10%;
+	display: inline-block;
+}
+.content>.dropdown{
+	margin: 5% 0;
 	text-align: center;
 }
-.form-group>input{
-	width: 300px;
-	height: 50px;
-	padding: 10px;	
-	background: #2d3436;
-	font-size: 20px;
-	margin: 10px auto;
-}
-#button{
-	margin:10px auto;
+#part1>button:hover,#part2>button:hover,#part3>button:hover,#part4>button:hover{
+	background: #000;
 }
