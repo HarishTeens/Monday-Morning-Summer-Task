@@ -44,11 +44,10 @@ body{
 	padding-top: 20px;
 	width: 400px;
 }
-form{
+#search{
 	border-bottom: 1px solid #dfe6e9;	
 	align-content: center;
-	margin-left: 400px;
-	
+	margin-left: 400px;	
 	padding-bottom: 5px;
 }
 .fa-search{
@@ -80,51 +79,22 @@ form{
 .sidebar>h3>a{
 	color: #2d3436;
 }
-
-
-
-
-
-
-
-
-.editors-pick>div>img{
-	width: 50%;
-	height:370px;
+.comment-section>form>input{
+	margin: 5px;
+	height: 50px;	
+	border: 2px solid #0984e3;
+	background: #2d3436;
+	font-size: 20px;
 }
-.editors-pick>div{
-	position: absolute;
+.user-details>h4{
+	margin-top: 50px;
 }
-.editors-pick{
-	position: relative;
-	width: 100%;
-	height: 370px;
-	
-
+.comments>img{
+	padding: 0px;
 }
-.picks>div{
-	display: inline-block;
+.admin>h1{
+	border: 3px solid #6c5ce7;	
 }
-.picks>div>h1{
-	padding:  10% auto;
-	font-size: 40px;
+.admin{
+	padding: 0px;
 }
-.editors-pick> div{
-	display: none;
-}
-.active{
-	display: block!important;
-}
-
-.aside{
-	position: relative;	
-	z-index: 1000;
-	right: 0px;	
-	top: 0px;
-	float: right;	
-}
-.article{
-	height: 400%;
-}
-
-
