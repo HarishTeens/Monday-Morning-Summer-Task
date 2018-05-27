@@ -1,0 +1,85 @@
+body{
+	background:#2d3436;
+	color: #dfe6e9;
+}
+#costumModal13{
+	z-index: 150000;
+}
+
+.active{
+	display: block!important;
+}
+#logo{
+	height: 170px;
+	width: 170px;
+	display: inline;
+	margin: 40px 50px;
+	margin-top: 0px;	
+}
+#logo+h1{
+	display: inline;
+	font-size: 100px;
+	margin-top: 0px;	
+}
+#sideline{	
+	text-align: center;
+	display: inline;
+	text-transform: uppercase;
+	float: right;
+	margin-top: -80px;
+}
+#main-nav{
+	background: inherit;
+	padding-top: 10px;
+	border: 0px;
+	z-index: 10000;
+
+	/*position: fixed;*/
+}
+.nav-items{
+	display: inline;
+}
+.nav-items>input{
+	background: inherit;
+	border: 0px;	
+	
+	word-spacing: 3px;	
+	padding-top: 20px;
+	width: 400px;
+}
+#search{
+	border-bottom: 1px solid #dfe6e9;	
+	align-content: center;
+	margin-left: 400px;	
+	padding-bottom: 5px;
+}
+.fa-search{
+	font-size: 1.5em;
+
+}
+::placeholder{
+	color: #dfe6e9;	
+	font-size: 24px;
+}
+.nav-items>a{
+	float: right;
+	color: inherit;
+	padding: 15px 20px;
+}
+
+#info-button{
+	font-size: 3em;	
+}
+.sidebar{
+	position: fixed;	
+	top: 50%;
+}
+.sidebar>h3{
+	background: #0984e3;
+	padding: 3px 8px;	
+	left:50px;
+}
+.sidebar>h3>a{
+	color: #2d3436;
+}
+
