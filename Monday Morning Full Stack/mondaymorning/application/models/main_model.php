@@ -13,7 +13,7 @@ class Main_model extends CI_Model {
 	}
 	function fetch()
 	{
-		$query=$this->db->get('users');
+		$query=$this->db->get('articles');
 		return $query;
 	}
 }

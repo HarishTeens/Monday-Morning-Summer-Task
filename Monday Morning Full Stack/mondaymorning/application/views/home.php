@@ -17,10 +17,10 @@
 						<form class="nav-items">
 							<input type="text" name="search" placeholder="Search articles here">
 							<i class="fa fa-search"></i>						
-						</form>
+						</form>						
 						<h3 class="nav-items"><a href="#">Login</a></h3>
 						<h3 class="nav-items"><a href="#">Signup</a></h3>
-						
+						<h3 class="nav-items"><a href="<?php echo base_url('admin') ?>">Admin Panel</a></h3>						
 					</div>	
 				</div>
 		</nav>
@@ -75,43 +75,25 @@
 					
 						
 							<div class="row">
-								<div class="col-md-9">
+								<div class="col-md-9">		
+								`
+									<!-- first page of article section -->		
+
+									<?php foreach ($articles->result() as $row) { ?>
 									<div class="col-lg-4 article">
 										<div class="thumbnail">
-											<img src="<?php echo base_url("assets/img/test1.jpg")?>">
+											<img src="<?php echo $row->Image ?>">										
 										</div>	
 										<div class="details">
-												<h3>category name</h3>
-												<h2>Authors name</h2>
+												<h3><?php echo $row->Category ?></h3>
+												<h2><?php echo $row->Author ?></h2>
 												<h4>date and place</h4>
-												<h3>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-												tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</h3>
+												<h3><?php echo $row->Content ?></h3>
 										</div>
-									</div>															
-									<div class="col-lg-4 article">
-										<div class="thumbnail">
-											<img src="<?php echo base_url("assets/img/test1.jpg")?>">
-										</div>	
-										<div class="details">
-												<h3>category name</h3>
-												<h2>Authors name</h2>
-												<h4>date and place</h4>
-												<h3>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-												tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</h3>
-										</div>
-									</div>															
-									<div class="col-lg-4 article">
-										<div class="thumbnail">
-											<img src="<?php echo base_url("assets/img/test1.jpg")?>">
-										</div>	
-										<div class="details">
-												<h3>category name</h3>
-												<h2>Authors name</h2>
-												<h4>date and place</h4>
-												<h3>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-												tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</h3>
-										</div>
-									</div>															
+									</div>	
+									<?php }	?>									
+
+
 								</div>
 								<div class="col-md-3 aside">
 									<h1>poll</h1>

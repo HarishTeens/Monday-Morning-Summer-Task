@@ -2,20 +2,20 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class article extends CI_Controller {
-	public function index()
+class article extends CI_Controller {	
+	public function view($id)
 	{
-		$this->load->view('article');
+		echo "hello";
 	}
 	public function add(){
 		$this->load->view('addarticle');
 	}
 	public function upload(){
-		$this->form_validation->set_rules('title','Post Title','required|alpha');	
-		$this->form_validation->set_rules('category','Post Category','required|alpha');			
-		$this->form_validation->set_rules('author','Post Author','required|alpha');			
-		$this->form_validation->set_rules('content','Post Content','required|alpha');	
-		$this->form_validation->set_rules('excerpt','Post Excerpt','required|alpha');		
+		$this->form_validation->set_rules('title','Post Title','required|alpha_numeric_spaces');	
+		$this->form_validation->set_rules('category','Post Category','required|alpha_numeric_spaces');			
+		$this->form_validation->set_rules('author','Post Author','required|alpha_numeric_spaces');			
+		$this->form_validation->set_rules('content','Post Content','required|alpha_numeric_spaces');	
+		$this->form_validation->set_rules('excerpt','Post Excerpt','required|alpha_numeric_spaces');		
 
 		if($this->form_validation->run())	
 		{
@@ -23,12 +23,25 @@ class article extends CI_Controller {
 				'upload_path' =>"./assets/img/uploads" ,
 				'allowed_types' =>"gif|jpg|png|jpeg|pdf|txt",
 				'overwrite' =>TRUE,
-				'max_size' => "2048000" // Can be set to particular file size , here it is 2 MB(2048 Kb)			
+				'max_size' => "307320000" // Can be set to particular file size , here it is 2 MB(2048 Kb)			
 			 );
 			$this->load->library('upload',$config);
 			if($this->upload->do_upload('image'))
 			{
-				$data = array('' => , );
+				$data = array(
+					'Title' => $this->input->post("title"),
+					'Category' => $this->input->post("category"),
+					'Author' => $this->input->post("author"),
+					'Content' => $this->input->post("content"),
+					'Excerpt' => $this->input->post("excerpt")					
+
+				 );				
+				$filedata=$this->upload->data();
+				$data['Image']=base_url("assets/img/uploads/").$filedata['file_name'];
+				date_default_timezone_set('Asia/Kolkata');
+				$data['datentime']= date("Y-m-d H:i:s");
+				$this->main_model->insert_data($data);
+				echo "successfully inserrted into db";
 			}
 			else
 			{
@@ -39,6 +52,10 @@ class article extends CI_Controller {
 		{
 			$this->add();
 		}
+	}
+	public function browse(){
+		$data['articles']=$this->main_model->fetch();
+		$this->load->view("browsearticles",$data);
 	}
 	
         

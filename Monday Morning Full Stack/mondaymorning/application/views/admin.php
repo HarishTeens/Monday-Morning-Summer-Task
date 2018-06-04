@@ -49,8 +49,8 @@
 					<div class="content">
 						<button class="btn btn-default btn-lg">Articles</button>
 						<div class="dropdown animated">
-							<button class="btn btn-default btn-lg">Add New Article</button>
-							<button class="btn btn-default btn-lg">Browse Articles</button>
+							<a href="<?php echo base_url('article/add') ?>"><button class="btn btn-default btn-lg">Add New Article</button></a>
+							<a href="<?php echo base_url('article/browse'); ?>"><button class="btn btn-default btn-lg">Browse Articles</button></a>
 						</div>	
 					</div>					
 				</div>
