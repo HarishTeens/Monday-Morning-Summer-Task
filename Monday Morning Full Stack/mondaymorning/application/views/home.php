@@ -24,7 +24,7 @@
 					</div>	
 				</div>
 		</nav>
-
+		<h1 style="color: green;"><?php echo $this->session->flashdata('msg'); ?></h1>
 
 			<!-- COntainer main  -->
 
@@ -79,7 +79,7 @@
 								`
 									<!-- first page of article section -->		
 
-									<?php foreach ($articles->result() as $row) { ?>
+									<!-- <?php foreach ($articles->result() as $row) { ?>
 									<div class="col-lg-4 article">
 										<div class="thumbnail">
 											<img src="<?php echo $row->Image ?>">										
@@ -91,7 +91,7 @@
 												<h3><?php echo $row->Content ?></h3>
 										</div>
 									</div>	
-									<?php }	?>									
+									<?php }	?>			 -->						
 
 
 								</div>
