@@ -23,9 +23,9 @@
 					</div>	
 				</div>
 		</nav>
-		<h1 style="color: blue"><?php echo $this->session->flashdata('msg'); ?></h1>
+		<h1 style="color: blue"><?php echo $this->session->flashdata('msg'); ?></h1>		
 <!-- header ends -->
-
+	
 		<div class="container">
 			<div class="heading">
 				<img src="<?php echo base_url('assets/img/logo.png');?>" id="logo">
@@ -49,6 +49,7 @@
 					<div class="form-group">
 						<input class="form-control" type="file" name="image" >
 					</div>
+					<input type="hidden" name="id" value="<?php echo $user_id; ?>">
 					<div class="form-group">
 						<textarea class="form-control" rows="5" cols="30" name="excerpt" placeholder="Enter post excerpt here"></textarea>
 					</div>										

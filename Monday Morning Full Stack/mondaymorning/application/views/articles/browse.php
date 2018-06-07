@@ -38,7 +38,7 @@
 					<li class="article">
 						<div class="article-main">
 							<h1><a href="<?php echo base_url('article/view/'.$row->id); ?>"><?php echo $row->Title; ?></a></h1>
-							<h1 id="datentime">Created on <?php echo $row->datentime ?></h1>	
+							<h1 id="datentime">Created on <?php echo $row->updated_at ?></h1>	
 						</div>
 						<div class="article-details">						
 							<div id="sub-details">

@@ -5,6 +5,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class home extends CI_Controller {
 	public function index()
 	{		
-		$this->load->view('home');		
+		$data['articles']=$this->article_model->get_article();
+		$this->load->view('home',$data);		
 	}
 }

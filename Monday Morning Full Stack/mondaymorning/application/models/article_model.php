@@ -11,4 +11,13 @@ class article_model extends CI_Model {
 		}
 
 	}
+	function get_article($slug=FALSE){
+		if($slug===FALSE){
+			$query=$this->db->get('articles');
+			return $query;
+		}
+		else{
+			
+		}
+	}
 }

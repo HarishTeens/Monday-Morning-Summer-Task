@@ -70,16 +70,18 @@
 						</div>
 					
 				</div>
-			
-				<div class="section row beginning">
-					
-						
-							<div class="row">
-								<div class="col-md-9">		
-								`
-									<!-- first page of article section -->		
 
-									<!-- <?php foreach ($articles->result() as $row) { ?>
+				<?php 
+				$var2=0;
+				$rows=$articles->num_rows();
+				$sections=$rows%3==0 ? $rows/3 : $rows/3+1;
+				for($var1=1;$var1<=$sections;$var1++){ ?>
+					<div class="section row">
+							<div class="row">
+								<div class="col-md-9">
+									<?php for (;$var2<3*$var1&&$var2<$rows;$var2++) { 
+										$row=$articles->result()[$var2];
+										?>
 									<div class="col-lg-4 article">
 										<div class="thumbnail">
 											<img src="<?php echo $row->Image ?>">										
@@ -91,9 +93,7 @@
 												<h3><?php echo $row->Content ?></h3>
 										</div>
 									</div>	
-									<?php }	?>			 -->						
-
-
+									<?php }	?>	
 								</div>
 								<div class="col-md-3 aside">
 									<h1>poll</h1>
@@ -103,16 +103,42 @@
 									consequat.</h3>
 								</div>
 							</div>
-						
-					
 				</div>
-				<div class="section row">					
-						
+				<?php }	 ?>
+				<!-- <div class="section row">
+							<div class="row">
+								<div class="col-md-9">
+									<?php for ($i=0;$i<$articles->num_rows();$i++) { 
+										$row=$articles->result()[$i];
+										?>
+									<div class="col-lg-4 article">
+										<div class="thumbnail">
+											<img src="<?php echo $row->Image ?>">										
+										</div>	
+										<div class="details">
+												<h3><?php echo $row->Category ?></h3>
+												<h2><?php echo $row->Author ?></h2>
+												<h4>date and place</h4>
+												<h3><?php echo $row->Content ?></h3>
+										</div>
+									</div>	
+									<?php }	?>	
+								</div>
+								<div class="col-md-3 aside">
+									<h1>poll</h1>
+									<h3>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+									tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+									quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+									consequat.</h3>
+								</div>
+							</div>
+				</div>
+				<div class="section row">
 							<div class="row">
 								<div class="col-lg-9">
 									<div class="col-lg-4 article">
 										<div class="thumbnail">
-											<img src="<?php echo base_url("assets/img/test1.jpg")?>">											
+											<img src="<?php echo base_url("assets/img/test1.jpg")?>">	
 										</div>	
 										<div class="details">
 												<h3>category name</h3>
@@ -121,31 +147,7 @@
 												<h3>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
 												tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</h3>
 										</div>
-									</div>															
-									<div class="col-lg-4 article">
-										<div class="thumbnail">
-											<img src="<?php echo base_url("assets/img/test1.jpg")?>">
-										</div>	
-										<div class="details">
-												<h3>category name</h3>
-												<h2>Authors name</h2>
-												<h4>date and place</h4>
-												<h3>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-												tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</h3>
-										</div>
-									</div>															
-									<div class="col-lg-4 article">
-										<div class="thumbnail">
-											<img src="<?php echo base_url("assets/img/test1.jpg")?>">
-										</div>	
-										<div class="details">
-												<h3>category name</h3>
-												<h2>Authors name</h2>
-												<h4>date and place</h4>
-												<h3>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-												tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</h3>
-										</div>
-									</div>															
+									</div>	
 								</div>
 								<div class="col-md-3 aside">
 									<h1>poll</h1>
@@ -157,7 +159,7 @@
 							</div>
 						
 					
-				</div>
+				</div> -->
 			</div>
 			
 
