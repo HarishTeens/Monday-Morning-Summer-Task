@@ -23,7 +23,7 @@
 					</div>	
 				</div>
 		</nav>
-
+		<h1 style="color: blue"><?php echo $this->session->flashdata('msg'); ?></h1>
 <!-- header ends -->
 
 		<div class="container">
@@ -35,28 +35,28 @@
 			<div class="body-section">
 				<?php echo validation_errors(); ?>
 				<?php 
-                    echo form_open_multipart('article/upload');
+                    echo form_open_multipart('articles/add');
                 ?> 
 					<div class="form-group">
-						<input type="text" name="title" placeholder="Enter Article Title">					
+						<input class="form-control" type="text" name="title" placeholder="Enter Article Title">	
 					</div>
 					<div class="form-group">
-						<input type="text" name="author" placeholder="Author name goes here">
+						<input class="form-control" type="text" name="author" placeholder="Author name goes here">
 					</div>
 					<div class="form-group">
-						<input type="text" name="category" placeholder="Category name goes here ">
+						<input class="form-control" type="text" name="category" placeholder="Category name goes here ">
 					</div>
 					<div class="form-group">
-						<input type="file" name="image" >
+						<input class="form-control" type="file" name="image" >
 					</div>
 					<div class="form-group">
-						<textarea rows="5" cols="30" name="excerpt" placeholder="Enter post excerpt here"></textarea>
+						<textarea class="form-control" rows="5" cols="30" name="excerpt" placeholder="Enter post excerpt here"></textarea>
 					</div>										
 					<div class="form-group">
-						<textarea rows="5" cols="30" name="content" placeholder="Article content goes here"></textarea>
+						<textarea class="form-control" rows="5" cols="30" name="content" placeholder="Article content goes here"></textarea>
 					</div>		
 					<div class="form-group">
-						<button id="submit" class="btn btn-danger btn-lg">Submit</button>
+						<button class="form-control" id="submit" class="btn btn-danger btn-lg">Submit</button>
 					</div>							
 			</div>
 			

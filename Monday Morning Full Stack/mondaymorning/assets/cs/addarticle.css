@@ -102,4 +102,6 @@ textarea{
 }
 #submit{
 	background: inherit;
+	color: red;
+	border-color: red;
 }
