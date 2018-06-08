@@ -84,7 +84,9 @@
 										?>
 									<div class="col-lg-4 article">
 										<div class="thumbnail">
-											<img src="<?php echo $row->Image ?>">										
+											<a  href="<?php echo base_url('articles/view/'.$row->slug) ;?>">
+												<img id="article-img" src="<?php echo $row->Image ?>">
+											</a>	
 										</div>	
 										<div class="details">
 												<h3><?php echo $row->Category ?></h3>

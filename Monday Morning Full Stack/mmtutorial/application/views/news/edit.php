@@ -8,6 +8,7 @@
 <h1>Edit News</h1>
 <h2><?php echo $news_item['id']; ?></h2>
 <h2><?php echo $news_item['title'] ?></h2>
+<?php echo validation_errors(); ?>
 <h2 style="color: green"><?php echo $this->session->flashdata('msg'); ?></h2>
 <?php echo form_open('news/edit/'.$news_item['id']) ?>
 <div class="form-group">

@@ -24,4 +24,8 @@ class user_model extends CI_Model {
 		$query=$this->db->get_where('users',array('email'=>$email,'password'=>md5($password)));
 		return $query->row_array();
 	}
+	function get_user($id){
+		$this->db->where('id',$id);
+		return $this->db->get('users')->row_array();
+	}
 }

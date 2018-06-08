@@ -89,10 +89,6 @@ class news extends CI_Controller {
             redirect(site_url('users/login'));
         } else {
             $data['user_id'] = $this->session->userdata('id');
-        }        
-        echo $id;
-        if (empty($id)) {
-            show_404();
         }   
         if($this->news_model->delete_news($id)){
         	$this->session->set_flashdata('msg','successfully deleted');

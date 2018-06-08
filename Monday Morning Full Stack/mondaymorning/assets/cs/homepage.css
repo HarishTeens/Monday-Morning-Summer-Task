@@ -126,5 +126,7 @@ form{
 .article{
 	height: 400%;
 }
-
+#article-img:hover{
+	opacity: 0.7;
+}
 

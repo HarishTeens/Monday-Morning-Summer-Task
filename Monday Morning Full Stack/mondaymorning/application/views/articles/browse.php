@@ -37,7 +37,7 @@
 					<?php foreach ($articles->result() as $row) { ?>
 					<li class="article">
 						<div class="article-main">
-							<h1><a href="<?php echo base_url('article/view/'.$row->id); ?>"><?php echo $row->Title; ?></a></h1>
+							<h1><a href="<?php echo base_url('articles/view/'.$row->slug); ?>"><?php echo $row->Title; ?></a></h1>
 							<h1 id="datentime">Created on <?php echo $row->updated_at ?></h1>	
 						</div>
 						<div class="article-details">						
@@ -46,8 +46,12 @@
 								<h3><?php echo $row->Author; ?></h3>	
 							</div>
 							<div id="details-btns">
-								<button class="btn btn-info">Edit</button>
-								<button class="btn btn-danger">Delete</button>
+								<a href="<?php echo base_url('articles/edit/'.$row->id) ?>">
+									<button class="btn btn-info">Edit</button>
+								</a>
+								<a href="<?php echo base_url('articles/delete/'.$row->id) ?>">
+									<button class="btn btn-danger" onclick="return confirm('Are you sure you want to delete?')">Delete</button>
+								</a>								
 							</div>
 						</div>						
 					</li>

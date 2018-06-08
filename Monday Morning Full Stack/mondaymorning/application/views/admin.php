@@ -27,20 +27,25 @@
 							</div>	
 						</div>
 				</nav>
-				<div class="container">
+				<div class="container">					
+						<?php if($this->session->flashdata('msg')){ ?>
+						<div class="alert alert-success" role="alert">						
+							<h1 style="color: red;"><?php echo $this->session->flashdata('msg'); ?></h1>
+						</div>			
+						<?php }?>		
 					<div class="heading">
 						<img src="<?php echo base_url('assets/img/logo.png');?>" id="logo">
 						<h1>Monday Morning </h1>
 						<h1 id="sideline">Raise your voice..!</h1>		
 					</div>				
-						<div class="details row">
-							<h1 id="page-title">Admin Panel</h1>		
-							<img class="col-md-3" src="<?php echo base_url('assets/img/test1.jpg');?>">
-							<div class="sub-details col-md-9">
-								<h3>Admin Name</h3>
-								<h4>Position at Name</h4>
-							</div>
+					<div class="details row">
+						<h1 id="page-title">Admin Panel</h1>		
+						<img class="col-md-3" src="<?php echo base_url('assets/img/test1.jpg');?>">
+						<div class="sub-details col-md-9">
+							<h3 style="text-transform: uppercase;"><?php echo $admin['firstname'].' '.$admin['lastname']; ?></h3>
+							<h4>Admin full-control</h4>
 						</div>
+					</div>
 				</div>	
 			</div>
 				
@@ -49,8 +54,8 @@
 					<div class="content">
 						<button class="btn btn-default btn-lg">Articles</button>
 						<div class="dropdown animated">
-							<a href="<?php echo base_url('article/add') ?>"><button class="btn btn-default btn-lg">Add New Article</button></a>
-							<a href="<?php echo base_url('article/browse'); ?>"><button class="btn btn-default btn-lg">Browse Articles</button></a>
+							<a href="<?php echo base_url('articles/add') ?>"><button class="btn btn-default btn-lg">Add New Article</button></a>
+							<a href="<?php echo base_url('articles/browse'); ?>"><button class="btn btn-default btn-lg">Browse Articles</button></a>
 						</div>	
 					</div>					
 				</div>
