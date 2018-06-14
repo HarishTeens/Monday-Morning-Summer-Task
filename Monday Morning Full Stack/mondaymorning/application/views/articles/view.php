@@ -12,18 +12,22 @@
 		<nav class="navbar navbar-default" id="main-nav">
 				<div class="container-fluid">			
 					<div>
-						<h3 class="nav-items">Home</h3>
+						<h3 class="nav-items" style="float: left;" ><a href="<?php echo base_url('home') ?>">Home</a></h3>
 						<form id="search" class="nav-items">
 							<input type="text" name="search" placeholder="Search articles here">
 							<i class="fa fa-search"></i>						
-						</form>
-						<h3 class="nav-items"><a href="#">Login</a></h3>
-						<h3 class="nav-items"><a href="#">Signup</a></h3>
+						</form>		
+						<?php if(isset($username)) {?>
+						<h3 class="nav-items right-items"><a href="<?php echo base_url('users/logout') ?>">Logout</a></h3>
+						<h3 class="nav-items right-items" ><a style="color: #d63031;" href="<?php echo base_url('admin') ?>"><?php echo $username; ?></a></h3>
+						<?php } else { ?>
+						<h3 class="nav-items right-items"><a href="<?php echo base_url('users/register') ?>">Signup</a></h3>
+						<h3 class="nav-items right-items"><a href="<?php echo base_url('users/login') ?>">Login</a></h3>
+						<?php } ?>
 						
 					</div>	
 				</div>
 		</nav>
-
 <!-- header ends -->
 
 		<div class="container">
@@ -33,35 +37,97 @@
 				<h1 id="sideline">Raise your voice..!</h1>		
 			</div>			
 			<div class="row">
-				<div class="article col-lg-9">
-					<div class="thumbnail">
-						<img src="<?php echo $article['Image'] ;?>" >							
-					</div>					
-					<div class="details">
-						<h1><?php echo $article['Title'] ?></h1>
-						<h2 style="opacity: 0.6">by <?php echo $article['Author']; ?></h2>
-						<br>
-						<h4><?php echo $article['Content'] ?></h4>
-						<br>
-					</div>
+				<div class="col-md-9">					
+						<div class="thumbnail">
+							<img src="<?php echo $article['Image'] ;?>" >							
+						</div>					
+						<div class="details">
+							<h1><?php echo $article['Title']; ?></h1>
+							<h2 style="opacity: 0.6">by <?php echo $article['Author']; ?></h2>
+							<br>
+							<h4><?php echo $article['Content'] ?></h4>
+							<br>
+						</div>									
 					<div class="comment-section">
-						<form method="POST" action="#">
+						<form class ="row" method="POST" action="<?php echo base_url('comments/add/'.$article['id'].'/'.$article['slug']); ?>">
 							<input type="text" class="col-md-9" name="comment" placeholder="Comment what you feel about this article">
-							<input type="submit" name="submit" class="col-md-2">
+							<input type="submit" name="submit" value="Comment" class="col-md-2">
 						</form>
-						<div class="comments">							
-							<img src="<?php echo base_url('assets/img/test2.jpg');?>" class="col-md-3">				
-							<div class="user-details col-md-9">
-								<h1>
-									Username
-								</h1>
-								<h4>
-									comment of the user that is entered
-								</h4>
-							</div>
+						<div class="comments">		
+							<?php 
+								if($comments->num_rows()>0){	
+									foreach ($comments->result() as $comment) { 
+							?>							
+								<div class="comment row">
+									<div  class="thumbnail col-md-2">
+										<img src="<?php echo base_url('assets/img/test2.jpg');?>">		
+									</div>										
+									<div class="user-details col-md-10" style="margin-top: -25px;">
+										<h1 style="color: #6c5ce7;">
+											<?php echo $comment->username; ?>
+										</h1>
+										<h4>
+											<?php echo $comment->Content; ?>
+										</h4>
+										<h5 style="float: right; margin-top: -50px;">
+											<?php 
+											echo $comment->updated_at; 											
+											?>
+										</h5>
+										
+										<div class="reply-section">
+											<button id="like-btn" class="btn btn-info btn-sm" style="padding: 0px 5px; font-size: 17px;">Like</button>
+											<button id="reply-btn" class="btn btn-info btn-sm" style="padding: 0px 5px; font-size: 17px;">Reply</button>
+											<form class ="row" method="POST" action="<?php echo base_url('reply/add/'.$comment->id.'/'.$article['slug']); ?>">
+												<input type="text" class="col-md-8" name="reply" placeholder="Reply to this comment">
+												<input type="submit" name="submit" value="Reply" class="col-md-2">
+											</form>
+											
+												<button class="btn" id="view-replies">
+													<?php 
+														$replies=$this->reply_model->get_replies_by_comment_id($comment->id);
+														if($replies->num_rows()>0){ ?>
+															 <h5><?php echo $replies->num_rows().' '; ?>replies </h5>
+													<?php }
+												 	?>		
+												</button>
+																							 	
+												
+											
+											<div class="replies">
+												<?php 
+													
+													if($replies->num_rows()>0){
+													foreach ($replies->result() as $reply) { 
+												?>
+												<div class="reply">
+													<h1 style="color: #6c5ce7;">
+														<?php echo $reply->username; ?>
+													</h1>
+													<h4>
+														<?php echo $reply->Content; ?>
+													</h4>
+													<h5 style="float: right; margin-top: -50px;">
+														<?php 
+														echo $reply->updated_at; 											
+														?>
+													</h5>
+												</div>
+												<?php 
+														}
+													} 
+												?>	
+											</div>
+										</div>
+									</div>
+								</div>
+							<?php 
+									}
+								} 
+							?>				
 						</div>
 					</div>
-					<div class="admin col-lg-12">
+					<div class="admin">
 						<h1>Admin control panel for COmments section</h1>
 					</div>
 				</div>	

@@ -16,6 +16,7 @@ class articles extends CI_Controller {
 		else
 		{
 			$data['user_id']=$this->session->userdata('id');
+			$data['username']=$this->session->userdata('username');
 		}
 		$this->form_validation->set_rules('title','Post Title','required|alpha_numeric_spaces');	
 		$this->form_validation->set_rules('category','Post Category','required|alpha_numeric_spaces');			
@@ -75,6 +76,7 @@ class articles extends CI_Controller {
 		else
 		{
 			$data['user_id']=$this->session->userdata('id');
+			$data['username']=$this->session->userdata('username');			
 		}
 		$data['articles']=$this->article_model->get_article();
 		$this->load->view("articles/browse",$data);
@@ -89,7 +91,13 @@ class articles extends CI_Controller {
 		{
 			$data['user_id']=$this->session->userdata('id');
 		}*/
+		if($this->session->userdata('is_logged_in'))
+		{			
+			$data['username']=$this->session->userdata('username');			
+		}
+
 		$data['article']=$this->article_model->get_article($slug);
+		$data['comments']=$this->comment_model->get_comments($data['article']['id']);		
 		$this->load->view('articles/view',$data);
 	}	
 	public function edit(){
@@ -101,6 +109,7 @@ class articles extends CI_Controller {
 		else
 		{
 			$data['user_id']=$this->session->userdata('id');
+			$data['username']=$this->session->userdata('username');			
 		}
 		$id=$this->uri->segment(3);
         if (empty($id)) {
@@ -165,6 +174,7 @@ class articles extends CI_Controller {
 		else
 		{
 			$data['user_id']=$this->session->userdata('id');
+			$data['username']=$this->session->userdata('username');			
 		}
 		if($this->article_model->delete_article($id)){
 			$this->session->set_flashdata('msg','Successfully Deleted');

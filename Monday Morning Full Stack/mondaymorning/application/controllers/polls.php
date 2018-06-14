@@ -6,7 +6,10 @@ class polls extends CI_Controller {
 	public function index()
 	{
 		/*$data['body']=$this->load->view('home',NULL,TRUE);*/
-
-		$this->load->view('polls');
+		if($this->session->userdata('is_logged_in'))
+		{			
+			$data['username']=$this->session->userdata('username');			
+		}
+		$this->load->view('polls',$data);
 	}
 }

@@ -1,6 +1,7 @@
 body{
 	background:#2d3436;
 	color: #dfe6e9;
+	margin-bottom: 200px;
 }
 #costumModal13{
 	z-index: 150000;
@@ -58,12 +59,13 @@ body{
 	color: #dfe6e9;	
 	font-size: 24px;
 }
-.nav-items>a{
+.right-items{
 	float: right;
+}
+.nav-items>a{	
 	color: inherit;
 	padding: 15px 20px;
 }
-
 #info-button{
 	font-size: 3em;	
 }
@@ -79,15 +81,22 @@ body{
 .sidebar>h3>a{
 	color: #2d3436;
 }
-.comment-section>form>input{
-	margin: 5px;
+.comment-section>form>input,.reply-section>form>input{
+	margin: 15px;
 	height: 50px;	
 	border: 2px solid #0984e3;
 	background: #2d3436;
 	font-size: 20px;
 }
-.user-details>h4{
-	margin-top: 50px;
+.comment>.thumbnail>img{
+	border-radius: 50%;	
+}
+.comment>.thumbnail{
+	background: inherit;
+	border: 0px;
+}
+.comment{
+	margin: 30px auto;
 }
 .comments>img{
 	padding: 0px;
@@ -97,4 +106,18 @@ body{
 }
 .admin{
 	padding: 0px;
+}
+#view-replies{
+	background: inherit;
+	border: 0px;
+	color: #fff;
+	opacity: 0.5;
+	display: block;
+}
+#view-replies:hover{
+	text-decoration: none;
+	color: #0984e3;
+}
+#view-replies:focus{
+	outline: 0;
 }

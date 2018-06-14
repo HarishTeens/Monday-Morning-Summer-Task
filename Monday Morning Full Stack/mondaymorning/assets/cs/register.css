@@ -58,8 +58,10 @@ body{
 	color: #dfe6e9;	
 	font-size: 24px;
 }
-.nav-items>a{
+.right-items{
 	float: right;
+}
+.nav-items>a{	
 	color: inherit;
 	padding: 15px 20px;
 }

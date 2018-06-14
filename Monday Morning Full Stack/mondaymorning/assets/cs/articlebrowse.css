@@ -58,8 +58,10 @@ body{
 	color: #dfe6e9;	
 	font-size: 24px;
 }
-.nav-items>a{
+.right-items{
 	float: right;
+}
+.nav-items>a{	
 	color: inherit;
 	padding: 15px 20px;
 }
@@ -100,6 +102,23 @@ body{
 }
 #sub-details>h3{
 	display: inline-block;	
-	margin-left: 200px;
-	margin-right: 200px;	
+	width: 45%;
+}
+.details-btns>a>button{
+	margin: 0px 30px;
+}
+.btn-group-justified>.btn-group{
+	padding: 0px 20px;
+}
+#category{
+	font-weight: 700;
+}
+#by{
+	opacity: 0.5;
+	font-style: italic;
+}
+#author{	
+	font-weight: 500;
+	text-transform: uppercase;
+	font-style: normal;
 }

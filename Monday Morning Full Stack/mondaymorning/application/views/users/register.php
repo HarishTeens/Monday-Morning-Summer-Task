@@ -12,14 +12,13 @@
 		<nav class="navbar navbar-default" id="main-nav">
 				<div class="container-fluid">			
 					<div>
-						<h3 class="nav-items">Home</h3>
-						<form id="search" class="nav-items">
+						<h3 class="nav-items" style="float: left;"><a href="<?php echo base_url('home') ?>">Home</a></h3>
+						<form class="nav-items" id="search">
 							<input type="text" name="search" placeholder="Search articles here">
 							<i class="fa fa-search"></i>						
-						</form>
-						<h3 class="nav-items"><a href="#">Login</a></h3>
-						<h3 class="nav-items"><a href="#">Signup</a></h3>
-						
+						</form>		
+						<h3 class="nav-items right-items"><a href="<?php echo base_url('admin') ?>">Admin Panel</a></h3>
+						<h3 class="nav-items right-items"><a href="<?php echo base_url('users/login') ?>">Login</a></h3>
 					</div>	
 				</div>
 		</nav>

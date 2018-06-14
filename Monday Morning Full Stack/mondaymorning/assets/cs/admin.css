@@ -47,6 +47,13 @@ body{
 	padding-top: 20px;
 	width: 400px;
 }
+form{
+	border-bottom: 1px solid #dfe6e9;	
+	align-content: center;
+	margin-left: 400px;
+	
+	padding-bottom: 5px;
+}
 #search{
 	border-bottom: 1px solid #dfe6e9;	
 	align-content: center;
@@ -61,8 +68,10 @@ body{
 	color: #dfe6e9;	
 	font-size: 24px;
 }
-.nav-items>a{
+.right-items{
 	float: right;
+}
+.nav-items>a{	
 	color: inherit;
 	padding: 15px 20px;
 }

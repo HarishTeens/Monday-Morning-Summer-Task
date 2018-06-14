@@ -13,6 +13,7 @@ class admin extends CI_Controller {
 		else
 		{
 			$data['user_id']=$this->session->userdata('id');
+			$data['username']=$this->session->userdata('username');
 		}
 
 		$data['admin']=$this->user_model->get_user($data['user_id']);

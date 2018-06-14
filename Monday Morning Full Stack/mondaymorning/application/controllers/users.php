@@ -41,7 +41,7 @@ class users extends CI_Controller {
 			$password=$this->input->post('password');
 			if($user=$this->user_model->get_user_login($email,$password))
 			{
-				$this->session->set_userdata('email',$email);
+				$this->session->set_userdata('username',$user['firstname']);
 				$this->session->set_userdata('id',$user['id']);
 				$this->session->set_userdata('is_logged_in',TRUE);
 				$this->session->set_flashdata('msg','Login Successful');
@@ -57,12 +57,13 @@ class users extends CI_Controller {
 	}
 	public function logout(){
 		if($this->session->userdata('is_logged_in')){
-			$this->session->unset_userdata('email');
+			$this->session->unset_userdata('username');
             $this->session->unset_userdata('is_logged_in');
             $this->session->unset_userdata('id');    
 			$this->session->set_flashdata('msg','Log out Successful');
 			redirect('home');
 		}
+		else
 		{
 			show_404();
 		}

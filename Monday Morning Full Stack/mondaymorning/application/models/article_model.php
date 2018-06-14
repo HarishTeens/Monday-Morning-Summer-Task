@@ -19,7 +19,7 @@ class article_model extends CI_Model {
 		}
 		else{
 			$query=$this->db->get_where('articles',array('slug'=>$slug));
-			return $query->result();
+			return $query->row_array();
 		}
 	}
 	function get_article_by_id($id){

@@ -12,13 +12,14 @@
 		<nav class="navbar navbar-default" id="main-nav">
 				<div class="container-fluid">			
 					<div>
-						<h3 class="nav-items">Home</h3>
-						<!-- <form id="search" class="nav-items">
-							<input type="text" name="search" placeholder="Search articles here">
-							<i class="fa fa-search"></i>						
-						</form> -->
-						<h3 class="nav-items"><a href="#">Login</a></h3>
-						<h3 class="nav-items"><a href="#">Signup</a></h3>
+						<h3 class="nav-items" style="float: left;"><a href="<?php echo base_url('home') ?>">Home</a></h3>
+						<?php if(isset($username)) {?>
+						<h3 class="nav-items right-items"><a href="<?php echo base_url('users/logout') ?>">Logout</a></h3>
+						<h3 class="nav-items right-items" ><a style="color: #d63031;" href="<?php echo base_url('admin') ?>"><?php echo $username; ?></a></h3>
+						<?php } else { ?>
+						<h3 class="nav-items right-items"><a href="<?php echo base_url('users/register') ?>">Signup</a></h3>
+						<h3 class="nav-items right-items"><a href="<?php echo base_url('users/login') ?>">Login</a></h3>
+						<?php } ?>
 						
 					</div>	
 				</div>
@@ -42,16 +43,22 @@
 						</div>
 						<div class="article-details">						
 							<div id="sub-details">
-								<h3><?php echo $row->Category; ?></h3>							
-								<h3><?php echo $row->Author; ?></h3>	
+								<h3 id="category"><?php echo $row->Category; ?></h3>							
+								<h3 ><span id="by">by</span> <span id="author"><?php echo $row->Author; ?></span></h3>	
 							</div>
-							<div id="details-btns">
-								<a href="<?php echo base_url('articles/edit/'.$row->id) ?>">
-									<button class="btn btn-info">Edit</button>
+							<br>
+							<br>
+							<div id="details-btns" class="btn-group btn-group-justified" role="group">
+							  <div class="btn-group " role="group">
+							    <a href="<?php echo base_url('articles/edit/'.$row->id) ?>">
+									<button class="btn btn-info btn-lg">Edit</button>
 								</a>
-								<a href="<?php echo base_url('articles/delete/'.$row->id) ?>">
-									<button class="btn btn-danger" onclick="return confirm('Are you sure you want to delete?')">Delete</button>
-								</a>								
+							  </div>							  
+							  <div class="btn-group" role="group">
+							    <a href="<?php echo base_url('articles/delete/'.$row->id) ?>">
+									<button class="btn btn-danger btn-lg" onclick="return confirm('Are you sure you want to delete?')">Delete</button>
+								</a>
+							  </div>
 							</div>
 						</div>						
 					</li>
