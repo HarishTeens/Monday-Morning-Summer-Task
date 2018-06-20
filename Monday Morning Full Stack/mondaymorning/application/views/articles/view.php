@@ -78,14 +78,14 @@
 										<div class="reply-section">
 											<button id="like-btn" class="btn btn-info btn-sm" style="padding: 0px 5px; font-size: 17px;">Like</button>
 											<button id="reply-btn" class="btn btn-info btn-sm" style="padding: 0px 5px; font-size: 17px;">Reply</button>
-											<form class ="row" method="POST" action="<?php echo base_url('reply/add/'.$comment->id.'/'.$article['slug']); ?>">
+											<form class ="row" method="POST" action="<?php echo base_url('reply/add/'.$comment->id.'/'.$article['slug'].'/'.$article['id']); ?>">
 												<input type="text" class="col-md-8" name="reply" placeholder="Reply to this comment">
 												<input type="submit" name="submit" value="Reply" class="col-md-2">
 											</form>
 											
 												<button class="btn" id="view-replies">
 													<?php 
-														$replies=$this->reply_model->get_replies_by_comment_id($comment->id);
+														$replies=$this->reply_model->get_replies_by_comment_id_view($comment->id);
 														if($replies->num_rows()>0){ ?>
 															 <h5><?php echo $replies->num_rows().' '; ?>replies </h5>
 													<?php }

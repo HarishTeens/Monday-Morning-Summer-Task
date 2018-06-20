@@ -20,7 +20,21 @@
 						</form>		
 						<?php if(isset($username)) {?>
 						<h3 class="nav-items right-items"><a href="<?php echo base_url('users/logout') ?>">Logout</a></h3>
-						<h3 class="nav-items right-items" ><a style="color: #d63031;" href="<?php echo base_url('admin') ?>"><?php echo $username; ?></a></h3>
+						<h3 class="nav-items right-items" >
+							<a style="color: #d63031;" href="
+							<?php
+								 if($this->session->userdata('access_level')=='admin'){
+								 	echo base_url('admin') ;
+								 }
+								 else{
+								 	echo "#";
+								 }
+							 ?>"
+							 >
+							 <?php echo $username; ?>
+							 	
+							 </a>
+						 </h3>
 
 						<?php } else { ?>						
 						<h3 class="nav-items right-items"><a href="<?php echo base_url('users/register') ?>">Signup</a></h3>

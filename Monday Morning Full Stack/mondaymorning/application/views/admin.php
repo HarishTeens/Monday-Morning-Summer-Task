@@ -68,14 +68,15 @@
 					<div class="content">
 						<button class="btn btn-default btn-lg">Polls</button>
 						<div class="dropdown animated">
-							<button class="btn btn-default btn-lg">Add New Poll</button>
-							<button class="btn btn-default btn-lg">Browse Polls</button>
+							<a href="<?php echo base_url('polls/add') ?>"><button class="btn btn-default btn-lg">Add New Poll</button></a>
+							<a href="<?php echo base_url('polls/browse') ?>"><button class="btn btn-default btn-lg">Browse Polls</button></a>
 						</div>	
 					</div>					
 				</div>
 				<div id="part3" class="animated">
 					<div class="content">
-						<button class="btn btn-default btn-lg">Comments Approval</button>
+						<button class="btn btn-default btn-lg"><a href="<?php echo base_url('comments/browse') ?>" style="color: black;">Comments Approval</a></button>
+						<button class="btn btn-default btn-lg"><a href="<?php echo base_url('reply/browse') ?>"  style="color: black;">Replies Approval</a></button>						
 					</div>					
 				</div>
 				<div id="part4" class="animated">

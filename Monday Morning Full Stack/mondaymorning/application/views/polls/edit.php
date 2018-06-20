@@ -40,21 +40,27 @@
 						Add New Poll
 					</h1>
 					<div class="body-section">
+						<form action="<?php echo base_url('polls/edit/'.$poll['id']); ?>" method="POST">
 						<h3>
-							Poll question: Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-							tempor incididunt ut labore et dolore magna aliqua.
+							<div class="form-group animated slideInDown">						      
+						      <input type="text" name="question" class="form-control" placeholder="Poll Question" value="<?php echo $poll['question'] ; ?>">
+						    </div>	
+						    <input type="hidden" name="p_id" value="<?php echo $poll['id']; ?>">				    					    
 						</h3>
-						<form action="#" method="POST">
+						
 						    <div class="form-group animated bounceInLeft">						      
-						      <input type="email" class="form-control" placeholder="Option +1">
-						    </div>						    
+						      <input type="text" name="answer_one" class="form-control" placeholder="Option +1" value="<?php echo $this->answer_model->get_answer($poll['answer_1']) ?>">
+						    </div>		
+						    <input type="hidden" name="a1_id" value="<?php echo $poll['answer_1']; ?>">				    
 						    <div class="form-group animated bounceInLeft">						      
-						      <input type="email" class="form-control" placeholder="Option 0">
-						    </div>						    
+						      <input type="text" name="answer_two" class="form-control" placeholder="Option 0" value="<?php echo $this->answer_model->get_answer($poll['answer_2']) ?>">
+						    </div>	
+						    <input type="hidden" name="a2_id" value="<?php echo $poll['answer_2']; ?>">	    
 						    <div class="form-group animated bounceInLeft">						      
-						      <input type="email" class="form-control" placeholder="Option -1">
-						    </div>						    
-						    <button type="submit" class="btn btn-lg btn-default animated wobble" id="add-poll">Add Poll</button>
+						      <input type="text" name="answer_three" class="form-control" placeholder="Option -1" value="<?php echo $this->answer_model->get_answer($poll['answer_3']) ?>">
+						    </div>						 
+						    <input type="hidden" name="a3_id" value="<?php echo $poll['answer_3']; ?>">				      
+						    <button type="submit" class="btn btn-lg btn-default animated wobble" id="add-poll">Edit Poll</button>
 						 </form>
 					</div>
 

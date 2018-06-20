@@ -43,6 +43,7 @@ class users extends CI_Controller {
 			{
 				$this->session->set_userdata('username',$user['firstname']);
 				$this->session->set_userdata('id',$user['id']);
+				$this->session->set_userdata('access_level',$user['access_level']);
 				$this->session->set_userdata('is_logged_in',TRUE);
 				$this->session->set_flashdata('msg','Login Successful');
 				redirect('home');
