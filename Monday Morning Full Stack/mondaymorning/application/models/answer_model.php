@@ -13,10 +13,15 @@ class answer_model extends CI_Model {
 	}
 	function get_answer($id){
 		$query=$this->db->get_where('answers',array('id'=>$id));
-		return $query->row_array()['answer'];
+		return $query->row_array();
 	}
 	function delete($id){
 		$this->db->where('id',$id);
 		$this->db->delete('answers');
+	}
+	function vote($id){		
+		$this->db->where('id', $id);
+		$this->db->set('votes', 'votes+1', FALSE);
+		$this->db->update('answers');
 	}
 }

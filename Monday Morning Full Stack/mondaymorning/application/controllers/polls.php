@@ -146,4 +146,10 @@ class polls extends CI_Controller {
 			redirect('admin');
 		}	
 	}
+	public function vote($id){
+		$answer=$this->input->post('vote');
+		$poll=$this->poll_model->get_poll_by_id($id);
+		$a_id=$poll[$answer];
+		$this->answer_model->vote($a_id);		
+		echo $a_id;
 }

@@ -24,4 +24,11 @@ class poll_model extends CI_Model {
 		$this->db->where('id',$id);
 		return $this->db->delete('polls');
 	}
+	function last_poll(){
+		$query = $this->db->order_by('id',"desc")
+		->limit(1)
+		->get('polls')
+		->row();
+		return $query;
+	}
 }

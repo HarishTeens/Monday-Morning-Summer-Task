@@ -10,6 +10,7 @@ class home extends CI_Controller {
 			$data['username']=$this->session->userdata('username');			
 		}
 		$data['articles']=$this->article_model->get_article();
+		$data['poll']=$this->poll_model->last_poll();
 		$this->load->view('home',$data);		
 	}
 }

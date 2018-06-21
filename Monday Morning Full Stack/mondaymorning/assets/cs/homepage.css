@@ -44,7 +44,7 @@ body{
 	padding-top: 20px;
 	width: 400px;
 }
-form{
+#search{
 	border-bottom: 1px solid #dfe6e9;	
 	align-content: center;
 	margin-left: 400px;
@@ -124,6 +124,8 @@ form{
 	right: 0px;	
 	top: 0px;
 	float: right;	
+	border: solid 2px #ff7675;
+	padding: 20px;
 }
 .article{
 	height: 400%;
@@ -131,4 +133,41 @@ form{
 #article-img:hover{
 	opacity: 0.7;
 }
-
+.answer{
+	margin: 10px auto;
+}
+.status-bar{
+	border: 1px solid #dfe6e9;
+	border-radius: 15px;
+	width: 100%;
+	padding: 5px;
+	height: 30px;
+	margin: 0px;
+}
+.bar-limiter{
+	padding: 0px;
+}
+.bar-value0{
+	background: #0984e3;	
+	border-radius: 15px;
+	height: 18px;
+	padding-left: 5px;
+	color: #2d3436;	
+}
+.bar-value1{
+	background: #6c5ce7;
+	border-radius: 15px;
+	height: 18px;
+	padding-left: 5px;
+	color: #2d3436;	
+}
+.bar-value2{
+	background: #d63031;
+	border-radius: 15px;
+	height: 18px;
+	padding-left: 5px;
+	color: #2d3436;	
+}
+.bar-info{
+	color: #ffeaa7;
+}

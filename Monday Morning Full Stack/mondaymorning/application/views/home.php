@@ -14,7 +14,7 @@
 				<div class="container-fluid">			
 					<div>
 						<h3 class="nav-items" style="float: left;"><a href="<?php echo base_url('home') ?>">Home</a></h3>
-						<form class="nav-items" method="POST" action="<?php echo base_url('search'); ?>">
+						<form id="search" class="nav-items" method="POST" action="<?php echo base_url('search'); ?>">
 							<input type="text" name="query" placeholder="Search articles here">
 							<i class="fa fa-search"></i>						
 						</form>		
@@ -117,13 +117,64 @@
 									</div>	
 									<?php }	?>	
 								</div>
+								<?php if($var1==1){ ?>
 								<div class="col-md-3 aside">
-									<h1>poll</h1>
-									<h3>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-									tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-									quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-									consequat.</h3>
+									<div id="before-vote">
+										<h1 style="text-align: center;">Poll</h1>
+										<h3><?php echo $poll->question.' ?'; ?></h3>										
+										<form class="ajax" action="<?php echo base_url('polls/vote/'.$poll->id) ?>" method="post">
+											<h3>
+												<input type="radio" name="vote" value="answer_1">
+												<?php echo $this->answer_model->get_answer($poll->answer_1)['answer'] ?>
+											</h3>
+											<h3>
+												<input type="radio" name="vote" value="answer_2">
+												<?php echo $this->answer_model->get_answer($poll->answer_2)['answer'] ?>
+											</h3>
+											<h3>
+												<input type="radio" name="vote" value="answer_3">
+												<?php echo $this->answer_model->get_answer($poll->answer_3)['answer'] ?>
+											</h3>
+											<button type="submit" class="btn btn-info btn-lg">
+												VOte
+											</button>
+										</form>
+									</div>
+									<div id="after-vote">
+										<h1 style="text-align: center;">Poll Analysis</h1>
+										<h3><?php echo $poll->question.' ?'; ?></h3>
+										<div class="answers">
+											<?php 
+												for($i=0;$i<3;$i++){
+												?>
+											<div class="answer">
+												<div class="ans">
+													<?php 
+													echo $limited_string;
+													$rest_of_string = 
+													trim(str_replace($limited_string, "", $original_string));
+													if($rest_of_string){
+														echo '....';
+													}
+													?>
+												</div>
+												<div class="status-bar row">
+													<div class="bar-limiter col-md-10">
+														<div class="<?php echo 'bar-value'.$i ; ?>  " >
+
+														</div>
+													</div>
+													<div class="bar-info col-md-2">
+														<?php echo round(($answer[$i]['votes']*100)/$total_votes); ?>%
+													</div>
+												</div>
+											</div>
+											<?php } ?>
+											
+										</div>
+									</div>									
 								</div>
+								<?php } ?>
 							</div>
 				</div>
 				<?php }	 ?>
@@ -166,6 +217,7 @@
 
 		<!-- Scripts -->
 		<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>  
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
 		<script type="text/javascript" src="<?php echo base_url("assets/js/fontawesome-all.min.js")?>"></script>
 		<script src='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js'></script>
 		<script src='https://cdnjs.cloudflare.com/ajax/libs/velocity/1.2.2/velocity.min.js'></script>

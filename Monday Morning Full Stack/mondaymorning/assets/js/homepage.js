@@ -6,6 +6,7 @@ $(".modal").each(function(l){$(this).on("show.bs.modal",function(l){var o=$(this
 $(document).ready(function() {
 	$('#fullpage').fullpage();		
 	$(".details").hide();
+	$('#after-vote').hide();
 	
 });
 
@@ -55,3 +56,35 @@ function animo (){
 	
 	
 };
+
+
+$('form.ajax').on('submit',function(){
+	var that=$(this),
+		method=that.attr('method'),
+		url=that.attr('action'),
+		data={};
+
+	that.find('input[name=vote]').each(function(){
+		var that=$(this);
+			checked=that[0].checked;
+			if(checked){
+			var	value=that.val(),
+			name=that.attr('name');			
+			data[name]=value;			
+		}
+	});	
+	$.ajax({
+		url:url,
+		type:'ajax',
+		method:method,
+		data:data,			   	
+		success: function(response){
+			console.log(response);
+			$('#before-vote').fadeOut();
+			$('#after-vote').fadeIn();
+			
+		}
+
+	});
+	return false;
+});
