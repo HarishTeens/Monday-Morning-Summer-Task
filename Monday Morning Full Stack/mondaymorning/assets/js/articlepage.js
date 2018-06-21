@@ -5,6 +5,43 @@ $(document).ready(function() {
 	$(".reply-section>form").hide();
 	$(".view-replies").show();
 	$(".replies").hide();
+	//se
+	load_data();
+	function on() {    
+	    $('#overlay').fadeIn();
+	}
+
+	function off() {    
+	    $('#overlay').fadeOut();
+	}
+	function load_data(query){		
+		var search_form=$('#search');
+
+		$.ajax({
+			url:search_form.attr('action'),
+			method:'post', 
+			data:{query:query},
+			success:function(response){
+				$('#overlay-text').html(response);
+			}
+		})
+	}
+	$('#search-text').keyup(function(){
+	if($(this).val()){		
+		on();
+		var search=$(this).val();
+		if(search!=''){
+			load_data(search);
+		} else {
+			load_data();
+		}
+		
+		}
+	else{
+		off();		
+	}	
+});
+	
 });
 
 $( "#reply-btn" ).click(function() {

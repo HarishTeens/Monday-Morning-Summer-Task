@@ -13,10 +13,10 @@
 				<div class="container-fluid">			
 					<div>
 						<h3 class="nav-items" style="float: left;" ><a href="<?php echo base_url('home') ?>">Home</a></h3>
-						<form id="search" class="nav-items">
-							<input type="text" name="search" placeholder="Search articles here">
+						<form id="search" class="nav-items" method="POST" action="<?php echo base_url('ajaxsearch/search'); ?>">
+							<input id="search-text" type="text" name="query" placeholder="Search articles here">
 							<i class="fa fa-search"></i>						
-						</form>		
+						</form>			
 						<?php if(isset($username)) {?>
 						<h3 class="nav-items right-items"><a href="<?php echo base_url('users/logout') ?>">Logout</a></h3>
 						<h3 class="nav-items right-items" ><a style="color: #d63031;" href="<?php echo base_url('admin') ?>"><?php echo $username; ?></a></h3>
@@ -29,7 +29,11 @@
 				</div>
 		</nav>
 <!-- header ends -->
-
+		<div id="overlay">
+				<div id="overlay-text">
+				
+				</div>
+			</div>
 		<div class="container">
 			<div class="heading">
 				<img src="<?php echo base_url('assets/img/logo.png');?>" id="logo">

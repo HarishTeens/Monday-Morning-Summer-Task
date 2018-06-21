@@ -15,8 +15,8 @@
 						<div class="container-fluid">			
 							<div>
 								<h3 class="nav-items" style="float: left;"><a href="<?php echo base_url('home') ?>">Home</a></h3>
-						<form class="nav-items" id="search">
-							<input type="text" name="search" placeholder="Search articles here">
+						<form id="search" class="nav-items" method="POST" action="<?php echo base_url('ajaxsearch/search'); ?>">
+							<input id="search-text" type="text" name="query" placeholder="Search articles here">
 							<i class="fa fa-search"></i>						
 						</form>		
 						<?php if(isset($username)) {?>
@@ -31,6 +31,11 @@
 						</div>
 				</nav>
 				<?php echo validation_errors(); ?>
+				<div id="overlay">
+				<div id="overlay-text">
+				
+				</div>
+			</div>
 				<div class="container">
 					<div class="heading">
 						<img src="<?php echo base_url('assets/img/logo.png');?>" id="logo">

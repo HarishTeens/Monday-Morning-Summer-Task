@@ -6,9 +6,47 @@ $(document).ready(function() {
 	$('#fullpage').fullpage();		
 	$(".details").hide();	
 	$('#after-vote').hide();
-	
+	//se
+	load_data();
+	function on() {    
+	    $('#overlay').fadeIn();
+	}
+
+	function off() {    
+	    $('#overlay').fadeOut();
+	}
+	function load_data(query){		
+		var search_form=$('#search');
+
+		$.ajax({
+			url:search_form.attr('action'),
+			method:'post', 
+			data:{query:query},
+			success:function(response){
+				$('#overlay-text').html(response);
+			}
+		})
+	}
+	$('#search-text').keyup(function(){
+	if($(this).val()){		
+		on();
+		var search=$(this).val();
+		if(search!=''){
+			load_data(search);
+		} else {
+			load_data();
+		}
+		
+		}
+	else{
+		off();		
+	}	
+});
 	
 });
+
+
+
 
 
 $(".article").mouseover(function(){
@@ -57,6 +95,9 @@ function animo (){
 	
 };
 
+
+
+
 function update_votes(data=0){
 	if(data){
 	var hola=$('.status-bar').find('div[data-index='+data+']'),
@@ -64,7 +105,7 @@ function update_votes(data=0){
 		hola.attr('data-vote',votes);
 		total_votes=parseInt(hola.attr('data-total-votes'))+1;
 		$('.bar-info').attr('data-total-votes',total_votes);
-		console.log(hola);
+		
 	}
 		
 		
@@ -75,12 +116,10 @@ function update_votes(data=0){
 		var that=$(this),
 			votes=that.attr('data-vote'),
 			total_votes=that.attr('data-total-votes');
-			var percentage=(votes*100/total_votes).toFixed();
-			console.log('votes'+votes);
-			console.log('total_votes'+total_votes);
+			var percentage=(votes*100/total_votes).toFixed();			
 		that[0].textContent=percentage+"%";
 		var x=that.parent().children()[0].style.width=percentage
-		console.log(x)		/*x.css('width',percentage+'%');*/;
+			/*x.css('width',percentage+'%');*/;
 		
 	})
 	
@@ -110,7 +149,7 @@ $('form.ajax').on('submit',function(){
 		method:method,
 		data:data,			   	
 		success: function(response){
-			console.log(response);
+			
 			update_votes(response);
 			$('#before-vote').hide();
 			$('#after-vote').fadeIn();
@@ -118,4 +157,11 @@ $('form.ajax').on('submit',function(){
 	})
 	return false;
 })
+
+
+
+
+
+
+
 

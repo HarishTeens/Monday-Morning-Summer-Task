@@ -14,8 +14,8 @@
 				<div class="container-fluid">			
 					<div>
 						<h3 class="nav-items" style="float: left;"><a href="<?php echo base_url('home') ?>">Home</a></h3>
-						<form id="search" class="nav-items" method="POST" action="<?php echo base_url('search'); ?>">
-							<input type="text" name="query" placeholder="Search articles here">
+						<form id="search" class="nav-items" method="POST" action="<?php echo base_url('ajaxsearch/search'); ?>">
+							<input id="search-text" type="text" name="query" placeholder="Search articles here">
 							<i class="fa fa-search"></i>						
 						</form>		
 						<?php if(isset($username)) {?>
@@ -50,6 +50,11 @@
 
 				
 			<!-- first section -->	
+			<div id="overlay">
+				<div id="overlay-text">
+				
+				</div>
+			</div>
 			<div class="container" id="fullpage">
 				<div class="section row">
 					
@@ -109,6 +114,7 @@
 											</a>	
 										</div>	
 										<div class="details">
+												<h3><b><?php  echo $row->Title;?></b></h3>
 												<h3><?php echo $row->Category ?></h3>
 												<h2><?php echo $row->Author ?></h2>
 												<h4>date and place</h4>
@@ -242,7 +248,7 @@
 			if($this->voter_model->check($ip,$poll->id)){ ?>
 				$(document).ready(function(){
 					$('#after-vote').show();
-					console.log('gellato');
+					
 					$('#before-vote').hide();	
 					update_votes();
 				})

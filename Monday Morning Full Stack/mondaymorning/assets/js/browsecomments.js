@@ -3,7 +3,43 @@ $(".modal").each(function(l){$(this).on("show.bs.modal",function(l){var o=$(this
 	
 $(document).ready(function() { 
 
+	//se
+	load_data();
+	function on() {    
+	    $('#overlay').fadeIn();
+	}
 
+	function off() {    
+	    $('#overlay').fadeOut();
+	}
+	function load_data(query){		
+		var search_form=$('#search');
+
+		$.ajax({
+			url:search_form.attr('action'),
+			method:'post', 
+			data:{query:query},
+			success:function(response){
+				$('#overlay-text').html(response);
+			}
+		})
+	}
+	$('#search-text').keyup(function(){
+	if($(this).val()){		
+		on();
+		var search=$(this).val();
+		if(search!=''){
+			load_data(search);
+		} else {
+			load_data();
+		}
+		
+		}
+	else{
+		off();		
+	}	
+});
+	
    $('input[name=approved]').change(function(){
    		var that=$(this).parent();
    		/*console.log(that);*/
