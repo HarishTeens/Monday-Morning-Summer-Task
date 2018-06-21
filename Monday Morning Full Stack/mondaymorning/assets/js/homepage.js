@@ -2,11 +2,11 @@ $(".modal").each(function(l){$(this).on("show.bs.modal",function(l){var o=$(this
 
 
 
-
 $(document).ready(function() {
 	$('#fullpage').fullpage();		
-	$(".details").hide();
+	$(".details").hide();	
 	$('#after-vote').hide();
+	
 	
 });
 
@@ -57,6 +57,37 @@ function animo (){
 	
 };
 
+function update_votes(data=0){
+	if(data){
+	var hola=$('.status-bar').find('div[data-index='+data+']'),
+		votes=parseInt(hola.attr('data-vote'))+1;
+		hola.attr('data-vote',votes);
+		total_votes=parseInt(hola.attr('data-total-votes'))+1;
+		$('.bar-info').attr('data-total-votes',total_votes);
+		console.log(hola);
+	}
+		
+		
+		
+		
+		
+	$('.status-bar').find('div[data-index]').each(function(){
+		var that=$(this),
+			votes=that.attr('data-vote'),
+			total_votes=that.attr('data-total-votes');
+			var percentage=(votes*100/total_votes).toFixed();
+			console.log('votes'+votes);
+			console.log('total_votes'+total_votes);
+		that[0].textContent=percentage+"%";
+		var x=that.parent().children()[0].style.width=percentage
+		console.log(x)		/*x.css('width',percentage+'%');*/;
+		
+	})
+	
+	
+		
+
+}
 
 $('form.ajax').on('submit',function(){
 	var that=$(this),
@@ -69,10 +100,10 @@ $('form.ajax').on('submit',function(){
 			checked=that[0].checked;
 			if(checked){
 			var	value=that.val(),
-			name=that.attr('name');			
-			data[name]=value;			
+			name=that.attr('name');
+			data[name]=value;
 		}
-	});	
+	})
 	$.ajax({
 		url:url,
 		type:'ajax',
@@ -80,11 +111,11 @@ $('form.ajax').on('submit',function(){
 		data:data,			   	
 		success: function(response){
 			console.log(response);
-			$('#before-vote').fadeOut();
+			update_votes(response);
+			$('#before-vote').hide();
 			$('#after-vote').fadeIn();
-			
 		}
-
-	});
+	})
 	return false;
-});
+})
+

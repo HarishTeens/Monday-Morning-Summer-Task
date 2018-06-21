@@ -153,6 +153,8 @@ body{
 	height: 18px;
 	padding-left: 5px;
 	color: #2d3436;	
+	animation: open-up 0.7s ;
+	z-index: 6000;
 }
 .bar-value1{
 	background: #6c5ce7;
@@ -160,6 +162,8 @@ body{
 	height: 18px;
 	padding-left: 5px;
 	color: #2d3436;	
+	animation: open-up 0.7s ;
+	z-index: 6000;
 }
 .bar-value2{
 	background: #d63031;
@@ -167,7 +171,26 @@ body{
 	height: 18px;
 	padding-left: 5px;
 	color: #2d3436;	
+	animation: open-up 0.7s ;
+	z-index: 6000;
 }
 .bar-info{
 	color: #ffeaa7;
+}
+@keyframes open-up {
+  0%{ 
+  	width: 0; 
+  }  
+  25%{
+  	width: 25%;
+  }
+  50%{
+  	width: 50%;
+  }
+  75%{
+  	width: 75%;
+  }
+  100%{
+   width: auto;
+  }
 }

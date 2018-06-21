@@ -21,15 +21,12 @@ $('form.ajax').on('submit',function(){
 	that.find('input[name=approved]').each(function(){
 		var that=$(this);
 			checked=that[0].checked;
-
 			if(checked){
 			var	value=that.val(),
 			name=that.attr('name');
-
 			data[name]=value;
 		}
 	})
-
 	$.ajax({
 		url:url,
 		type:'ajax',

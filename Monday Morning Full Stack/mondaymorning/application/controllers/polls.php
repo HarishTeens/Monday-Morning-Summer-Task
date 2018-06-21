@@ -149,7 +149,18 @@ class polls extends CI_Controller {
 	public function vote($id){
 		$answer=$this->input->post('vote');
 		$poll=$this->poll_model->get_poll_by_id($id);
-		$a_id=$poll[$answer];
-		$this->answer_model->vote($a_id);		
-		echo $a_id;
+		$a_id=$poll[$answer];		
+		$this->answer_model->vote($a_id);
+		$voter=array(
+			'ip'=>$this->input->ip_address(),
+			'poll_id'=>$id,
+			'answer'=>$a_id,			
+			);
+		date_default_timezone_set('Asia/Kolkata');
+		$voter['updated_at']= date("Y-m-d H:i:s");
+		$this->voter_model->add($voter);
+
+		$data=$this->answer_model->get_answer($a_id)['votes'];		
+		echo $answer[7];	
+	}
 }

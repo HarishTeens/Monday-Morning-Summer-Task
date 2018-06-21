@@ -121,7 +121,7 @@
 								<div class="col-md-3 aside">
 									<div id="before-vote">
 										<h1 style="text-align: center;">Poll</h1>
-										<h3><?php echo $poll->question.' ?'; ?></h3>										
+										<h3><?php echo $poll->question.' ?'; ?></h3>
 										<form class="ajax" action="<?php echo base_url('polls/vote/'.$poll->id) ?>" method="post">
 											<h3>
 												<input type="radio" name="vote" value="answer_1">
@@ -145,7 +145,17 @@
 										<h3><?php echo $poll->question.' ?'; ?></h3>
 										<div class="answers">
 											<?php 
+												$answer[0]=$this->answer_model->get_answer($poll->answer_1);
+												$answer[1]=$this->answer_model->get_answer($poll->answer_2);
+												$answer[2]=$this->answer_model->get_answer($poll->answer_3);
+												$total_votes=0;
 												for($i=0;$i<3;$i++){
+													$total_votes+=$answer[$i]['votes'];
+												}	
+												for($i=0;$i<3;$i++){ 
+												$original_string=$answer[$i]['answer'];
+												$limited_string = word_limiter( $original_string,7, ' ');
+												$rest_of_string = trim(str_replace($limited_string, "", $original_string));
 												?>
 											<div class="answer">
 												<div class="ans">
@@ -164,15 +174,17 @@
 
 														</div>
 													</div>
-													<div class="bar-info col-md-2">
-														<?php echo round(($answer[$i]['votes']*100)/$total_votes); ?>%
+													<div style="padding-left: 5px;" class="bar-info col-md-2" data-index="<?php echo $i+1; ?>" data-vote="<?php echo $answer[$i]['votes']; ?>"
+													data-total-votes="<?php echo $total_votes; ?>">
+														
 													</div>
 												</div>
 											</div>
 											<?php } ?>
 											
 										</div>
-									</div>									
+									</div>	
+																	
 								</div>
 								<?php } ?>
 							</div>
@@ -224,6 +236,21 @@
 		<script src='https://cdnjs.cloudflare.com/ajax/libs/velocity/1.2.2/velocity.ui.min.js'></script>
 		<script type="text/javascript" src="<?php echo base_url("assets/js/jquery.fullPage.js")?>"></script>
 		<script  src="<?php echo base_url("assets/js/homepage.js")?>"></script>
+		<script type="text/javascript">
+			<?php 
+			$ip=$this->input->ip_address();
+			if($this->voter_model->check($ip)){ ?>
+				$(document).ready(function(){
+					$('#after-vote').show();
+					console.log('gellato');
+					$('#before-vote').hide();	
+					update_votes();
+				})
+				
+			<?php }
+
+			 ?>
+		</script>
 
 
 
