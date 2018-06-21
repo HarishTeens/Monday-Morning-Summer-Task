@@ -47,9 +47,9 @@
 								<h3 ><span id="by">by</span> <span id="author"><?php echo $row->Author; ?></span></h3>	
 							</div> -->
 							<div id="sub-details" >								
-								<h3><b style="float: left; margin-left: 20px">Answer One : </b><?php echo $this->answer_model->get_answer($row->answer_1) ?></h3>
-								<h3><b style="float: left; margin-left: 20px">Answer Two : </b><?php echo $this->answer_model->get_answer($row->answer_2) ?></h3>
-								<h3><b style="float: left; margin-left: 20px">Answer Three : </b><?php echo $this->answer_model->get_answer($row->answer_3) ?></h3>
+								<h3><b style="float: left; margin-left: 20px">Answer One : </b><?php echo $this->answer_model->get_answer($row->answer_1)['answer'] ?></h3>
+								<h3><b style="float: left; margin-left: 20px">Answer Two : </b><?php echo $this->answer_model->get_answer($row->answer_2)['answer'] ?></h3>
+								<h3><b style="float: left; margin-left: 20px">Answer Three : </b><?php echo $this->answer_model->get_answer($row->answer_3)['answer'] ?></h3>
 							</div>
 							<br>
 							<br>

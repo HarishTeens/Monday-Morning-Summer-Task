@@ -239,7 +239,7 @@
 		<script type="text/javascript">
 			<?php 
 			$ip=$this->input->ip_address();
-			if($this->voter_model->check($ip)){ ?>
+			if($this->voter_model->check($ip,$poll->id)){ ?>
 				$(document).ready(function(){
 					$('#after-vote').show();
 					console.log('gellato');

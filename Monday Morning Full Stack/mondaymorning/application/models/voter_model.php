@@ -5,8 +5,8 @@ class voter_model extends CI_Model {
 	function add($data){
 		$this->db->insert('voters',$data);
 	}
-	function check($ip){
-		$query=$this->db->get_where('voters',array('ip'=>$ip));
+	function check($ip,$id){
+		$query=$this->db->get_where('voters',array('ip'=>$ip,'poll_id'=>$id));
 		return $query->num_rows();
 	}
 }
