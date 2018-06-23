@@ -76,7 +76,8 @@ form{
 }
 #overlay-text{
     position: absolute;
-    top: 50%;
+    top: 70%;
+    height: 100%;
     left: 50%;
     font-size: 50px;
     color: white;

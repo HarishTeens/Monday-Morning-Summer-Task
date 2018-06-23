@@ -33,10 +33,10 @@
 						</div>
 				</nav>
 				<div id="overlay">
-				<div id="overlay-text">
+					<div id="overlay-text">
 				
+					</div>
 				</div>
-			</div>
 				<div class="container">					
 						<?php if($this->session->flashdata('msg')){ ?>
 						<div class="alert alert-success" role="alert">						

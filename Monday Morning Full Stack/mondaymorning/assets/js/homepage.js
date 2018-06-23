@@ -9,7 +9,7 @@ $(document).ready(function() {
 	//se
 	load_data();
 	function on() {    
-	    $('#overlay').fadeIn();
+	    $('#overlay').fadeIn();	    
 	}
 
 	function off() {    
