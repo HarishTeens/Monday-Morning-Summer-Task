@@ -47,7 +47,7 @@ class articles extends CI_Controller {
 					'user_id'=>$this->input->post('id')	
 				 );				
 				$filedata=$this->upload->data();
-				$data['Image']=base_url("assets/img/uploads/").$filedata['file_name'];
+				$data['Image']=$filedata['file_name'];
 				date_default_timezone_set('Asia/Kolkata');
 				$data['updated_at']= date("Y-m-d H:i:s");
 				$data['slug']=url_title($this->input->post('title'),'dash',TRUE);
@@ -145,7 +145,7 @@ class articles extends CI_Controller {
 					'user_id'=>$this->input->post('user_id')	
 				 );				
 				$filedata=$this->upload->data();
-				$data['Image']=base_url("assets/img/uploads/").$filedata['file_name'];
+				$data['Image']=$filedata['file_name'];
 				date_default_timezone_set('Asia/Kolkata');
 				$data['updated_at']= date("Y-m-d H:i:s");
 				$data['slug']=url_title($this->input->post('title'),'dash',TRUE);	

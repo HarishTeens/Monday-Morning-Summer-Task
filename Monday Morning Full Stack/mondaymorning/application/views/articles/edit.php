@@ -51,7 +51,7 @@
 						value="<?php echo $article['Category'] ?>">	
 					</div>
 					<div class="form-group">
-						<input class="form-control" type="file" name="image">	
+						<input class="form-control" type="file" name="image" value="<?php base_url("assets/img/uploads/").$article['Image']; ?>">	
 					</div>
 					<input type="hidden" name="user_id" value="<?php echo $user_id; ?>">
 					<input type="hidden" name="id" value="<?php echo $article['id']; ?>">

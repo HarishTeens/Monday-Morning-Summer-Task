@@ -43,7 +43,7 @@
 			<div class="row">
 				<div class="col-md-9">					
 						<div class="thumbnail">
-							<img src="<?php echo $article['Image'] ;?>" >							
+							<img src="<?php echo base_url("assets/img/uploads/").$article['Image'] ;?>" >							
 						</div>					
 						<div class="details">
 							<h1><?php echo $article['Title']; ?></h1>

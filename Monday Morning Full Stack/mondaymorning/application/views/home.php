@@ -110,7 +110,7 @@
 									<div class="col-lg-4 article">
 										<div class="thumbnail">
 											<a  href="<?php echo base_url('articles/view/'.$row->slug) ;?>">
-												<img id="article-img" src="<?php echo $row->Image ?>">
+												<img id="article-img" src="<?php echo base_url("assets/img/uploads/").$row->Image ?>">
 											</a>	
 										</div>	
 										<div class="details">

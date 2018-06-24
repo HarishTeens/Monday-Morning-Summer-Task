@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Jun 23, 2018 at 09:04 AM
+-- Generation Time: Jun 24, 2018 at 05:16 PM
 -- Server version: 5.7.19
 -- PHP Version: 5.6.31
 
@@ -75,11 +75,11 @@ CREATE TABLE IF NOT EXISTS `articles` (
 --
 
 INSERT INTO `articles` (`id`, `Title`, `slug`, `Category`, `Author`, `user_id`, `Content`, `Excerpt`, `Image`, `view_count`, `updated_at`) VALUES
-(9, 'could this be love', 'could-this-be-love', 'love', 'the want', 1, 'she got me callin every day', 'she takes my breath away ', 'http://localhost/mondaymorning/assets/img/uploads/test1.jpg', 0, '2018-06-08 16:33:41'),
-(12, 'Youth', 'youth', 'Life matter', 'Shawn Mendes and Khalid', 1, 'you cant take my youth away this soul of mine will never break', 'wake up today', 'http://localhost/mondaymorning/assets/img/uploads/test2.jpg', 0, '2018-06-08 16:39:01'),
-(13, 'Genius', 'genius', 'stupid', 'Sia Labrynth', 1, 'oh my goddddd', 'girl girlll', 'http://localhost/mondaymorning/assets/img/uploads/test3.jpg', 0, '2018-06-08 16:57:59'),
-(14, 'phone lost', 'phone-lost', 'Lostnfound', 'prasanna', 1, 'My phone is lost idk what to do ', 'phone is lost', 'http://localhost/mondaymorning/assets/img/uploads/test3.jpg', 0, '2018-06-08 18:17:29'),
-(17, 'asdf', 'asdf', 'dsaf', 'asdf', 1, 'sdaf', 'asdfasdf', 'http://localhost/mondaymorning/assets/img/uploads/test1.jpg', 0, '2018-06-22 21:04:22');
+(9, 'could this be love', 'could-this-be-love', 'love', 'the want', 1, 'she got me callin every day', 'she takes my breath away ', 'test1.jpg', 0, '2018-06-08 16:33:41'),
+(12, 'Youth', 'youth', 'Life matter', 'Shawn Mendes and Khalid', 1, 'you cant take my youth away this soul of mine will never break', 'wake up today', 'test2.jpg', 0, '2018-06-08 16:39:01'),
+(13, 'Genius', 'genius', 'stupid', 'Sia Labrynth', 1, 'oh my goddddd', 'girl girlll', 'test3.jpg', 0, '2018-06-08 16:57:59'),
+(14, 'phone lost', 'phone-lost', 'Lostnfound', 'prasanna', 1, 'My phone is lost idk what to do ', 'phone is lost', 'test3.jpg', 0, '2018-06-08 18:17:29'),
+(17, 'asdf', 'asdf', 'dsaf', 'asdf', 1, 'sdaf', 'asdfasdf', 'test1.jpg', 0, '2018-06-22 21:04:22');
 
 -- --------------------------------------------------------
 
