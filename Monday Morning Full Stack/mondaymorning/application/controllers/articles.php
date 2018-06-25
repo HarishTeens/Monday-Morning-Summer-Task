@@ -97,6 +97,7 @@ class articles extends CI_Controller {
 		}
 
 		$data['article']=$this->article_model->get_article($slug);
+		$this->article_model->increment_views($data['article']['id']);
 		$data['comments']=$this->comment_model->get_comments_view($data['article']['id']);		
 		$this->load->view('articles/view',$data);
 	}	

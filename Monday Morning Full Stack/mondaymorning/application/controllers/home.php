@@ -9,7 +9,7 @@ class home extends CI_Controller {
 		{			
 			$data['username']=$this->session->userdata('username');			
 		}
-		$data["editorspick"]=$this->article_model->get_article_by_category("Editor's Pick");
+		$data["editorspick"]=$this->article_model->top3();
 		$data['categ']['departments']=$this->article_model->get_article_by_category('Department');
 		$data['categ']['campus']=$this->article_model->get_article_by_category('Campus');
 		$data['categ']['views']=$this->article_model->get_article_by_category('Views');

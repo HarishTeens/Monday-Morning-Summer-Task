@@ -34,4 +34,15 @@ class article_model extends CI_Model {
 		$query=$this->db->get_where('articles',array('Category'=>$category));
 		return $query;
 	}
+	function increment_views($id){
+		$this->db->where('id', $id);
+		$this->db->set('view_count', 'view_count+1', FALSE);
+		$this->db->update('articles');
+	}
+	function top3(){
+		$query = $this->db->order_by('view_count DESC, id ASC')
+		->limit(3)
+		->get('articles');		
+		return $query;
+	}
 }

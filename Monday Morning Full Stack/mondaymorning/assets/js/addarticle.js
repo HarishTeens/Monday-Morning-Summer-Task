@@ -30,10 +30,7 @@ $(document).ready(function(){
 			$('.sub-category').slideUp();
 			$('#excerpt').slideDown();
 			$('#ddncwc').slideDown();
-		} else if(that.val()=="Editor's Pick"){
-			$('.sub-category').slideUp();
-			$('#excerpt').slideUp();
-		}
+		} 
 
 
 	});

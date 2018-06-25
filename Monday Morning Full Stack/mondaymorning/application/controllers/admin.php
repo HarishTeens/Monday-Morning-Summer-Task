@@ -17,6 +17,10 @@ class admin extends CI_Controller {
 		}
 
 		$data['admin']=$this->user_model->get_user($data['user_id']);
+		if($data['admin']['access_level']!='admin'){
+			$this->session->set_flashdata('msg','You must be Admin to do that');
+			redirect('home');
+		}
 		$this->load->view('admin',$data);
 	}
 }

@@ -52,8 +52,7 @@
 							<option value="DD & CWC">DD & CWC</option>
 							<option value="Views">Views</option>
 							<option value="Career">Career</option>
-							<option value="Alumini">Alumini</option>
-							<option value="Editor's Pick">Editor's Pick</option>
+							<option value="Alumini">Alumini</option>							
 						</select>
 					</div>					
 					<div class="form-group">
