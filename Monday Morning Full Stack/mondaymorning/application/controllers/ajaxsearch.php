@@ -18,7 +18,7 @@ class ajaxsearch extends CI_Controller {
 				$output.='<div class="article-s col-md-3">
 										<div class="thumbnail">
 											<a  href="'.base_url('articles/view/'.$row->slug).'">
-												<img id="article-img" src="'.$row->Image.'">
+												<img id="article-img" src="'.base_url('assets/img/uploads/').$row->Image.'">
 											</a>	
 										</div>	
 										<div class="details">

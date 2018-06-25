@@ -3,8 +3,8 @@ $(".modal").each(function(l){$(this).on("show.bs.modal",function(l){var o=$(this
 
 
 $(document).ready(function() {
-	$('#fullpage').fullpage();		
-	$(".details").hide();	
+			
+	//$(".details").hide();	
 	$('#after-vote').hide();
 	//se
 	load_data();
@@ -48,7 +48,7 @@ $(document).ready(function() {
 
 
 
-
+/*
 $(".article").mouseover(function(){
 	var x=$(this).children()[1];	
 	x.className="details active animated bounceInDown";
@@ -59,7 +59,7 @@ $(".article").mouseover(function(){
 		var x=$(this).children()[1];
 		x.className="details active animated bounceOutUp";
 	})
-
+*/
 /*$(document).scroll(function(){
 	var x=$(".beginning").hasClass("active");
 	console.log(x);
@@ -78,7 +78,7 @@ $(".article").mouseover(function(){
 
 
 $(".editors-pick> div:gt(0)").hide();
-setInterval(animo,4000);
+//setInterval(animo,4000);
 
 function animo (){
 	$(".editors-pick>div:first")		
@@ -90,7 +90,7 @@ function animo (){
 		.addClass("active flipInX")
 		.end()
 		.appendTo(".editors-pick");
-	},1000);
+	},300);
 	
 	
 };

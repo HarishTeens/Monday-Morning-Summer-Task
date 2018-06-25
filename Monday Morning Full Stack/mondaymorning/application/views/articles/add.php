@@ -45,14 +45,102 @@
 						<input class="form-control" type="text" name="author" placeholder="Author name goes here">
 					</div>
 					<div class="form-group">
-						<input class="form-control" type="text" name="category" placeholder="Category name goes here ">
+						<select id='category' class="form-control" name="category">
+							<option value="">Category</option>
+							<option value="Department">Department</option>
+							<option value="Campus">Campus</option>
+							<option value="DD & CWC">DD & CWC</option>
+							<option value="Views">Views</option>
+							<option value="Career">Career</option>
+							<option value="Alumini">Alumini</option>
+							<option value="Editor's Pick">Editor's Pick</option>
+						</select>
+					</div>					
+					<div class="form-group">
+						<select id='department' class="sub-category form-control" name="sub-category">							
+							<option value="">Sub-Category</option>
+							<option value="Biotechnology and Biomedical Engineering">Biotechnology and Biomedical Engineering</option>
+							<option value="Ceramic Engineering">Ceramic Engineering</option>
+							<option value="Chemical Engineering">Chemical Engineering</option>
+							<option value="Civil Engineering">Civil Engineering</option>
+							<option value="Computer Science and Engineering">Computer Science and Engineering</option>
+							<option value="Department of Chemistry">Department of Chemistry</option>
+							<option value="Department of Humanities">Department of Humanities</option>
+							<option value="Department of Life Science">Department of Life Science</option>
+							<option value="Department of Mathematics">Department of Mathematics</option>
+							<option value="Department of Physics">Department of Physics</option>
+							<option value="Electrical Engineering">Electrical Engineering</option>
+							<option value="Electronics and Communication Engineering">Electronics and Communication Engineering</option>
+							<option value="Food Process Engineering">Food Process Engineering</option>
+							<option value="Industrial Design">Industrial Design</option>
+							<option value="Mechanical Engineering">Mechanical Engineering</option>
+							<option value="Metallurgical and Materials Engineering">Metallurgical and Materials Engineering</option>
+							<option value="Mining Engineering">Mining Engineering</option>
+							<option value="Planning and Architecture">Planning and Architecture</option>
+							<option value="School of Management">School of Management</option>
+							<option value="Department of Earth and Atmospheric Sciences">Department of Earth and Atmospheric Sciences</option>
+
+
+						</select>
 					</div>
+					<div class="form-group">
+						<select id='campus' class="sub-category form-control" name="sub-category">
+							<option value="">Sub-Category</option>
+							<option value="SAC Speaks">SAC Speaks</option>
+							<option value="Campus Buzz">Campus Buzz</option>
+							<option value="Clubs">Clubs</option>
+							<option value="Halls">Halls</option>
+							<option value="Sports">Sports</option>
+							<option value="Fests">Fests</option>
+							<option value="Wits-Domk">Wits-Domk</option>
+							<option value="Admission">Admission</option>
+						</select>
+					</div>
+					<div class="form-group">
+						<select id='views' class="sub-category form-control" name="sub-category">
+							<option value="">Sub-Category</option>
+							<option value="Interview">Interview</option>
+							<option value="The CGPA">The CGPA</option>
+							<option value="Student PUlse">Student PUlse</option>
+							<option value="Poll Analysis">Poll Analysis</option>
+							<option value="Featured">Featured</option>
+							<option value="Citizen Journalist">Citizen Journalist</option>
+							<option value="Forum">Forum</option>
+							<option value="Ask a Question">Ask a Question</option>
+						</select>
+					</div>
+					<div class="form-group">
+						<select id='career' class="sub-category form-control" name="sub-category">
+							<option value="">Sub-Category</option>
+							<option value="Placements">Placements</option>
+							<option value="Recruitment Feedback">Recruitment Feedback</option>
+							<option value="Internships">Internships</option>
+							<option value="Internship Database">Internship Database</option>
+							<option value="Share Your Intern">Share Your Intern</option>
+						</select>
+					</div>
+					<div class="form-group">
+						<select id='alumini' class="sub-category form-control" name="sub-category">
+							<option value="">Sub-Category</option>
+							<option value="Alumnus Speaks">Alumnus Speaks</option>
+							<option value="Happenings">Happenings</option>
+							<option value="Find your Alumni">Find your Alumni</option>
+							<option value="NITRAA Executive Council">NITRAA Executive Council</option>
+						</select>
+					</div>
+					<div class="form-group">
+						<select id='ddncwc' class="sub-category form-control" name="sub-category">
+							<option value="">Sub-Category</option>
+							<option value="Director's Desk">Director's Desk</option>
+							<option value="Chief Warden's Column">Chief Warden's Column</option>
+						</select>
+					</div>					
 					<div class="form-group">
 						<input class="form-control" type="file" name="image" >
 					</div>
 					<input type="hidden" name="id" value="<?php echo $user_id; ?>">
-					<div class="form-group">
-						<textarea class="form-control" rows="5" cols="30" name="excerpt" placeholder="Enter post excerpt here"></textarea>
+					<div class="form-group" >
+						<textarea class="form-control" id='excerpt' rows="5" cols="30" name="excerpt" placeholder="Enter post excerpt here"></textarea>
 					</div>										
 					<div class="form-group">
 						<textarea class="form-control" rows="5" cols="30" name="content" placeholder="Article content goes here"></textarea>
@@ -123,7 +211,7 @@
 		<script src='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js'></script>
 		<script src='https://cdnjs.cloudflare.com/ajax/libs/velocity/1.2.2/velocity.min.js'></script>
 		<script src='https://cdnjs.cloudflare.com/ajax/libs/velocity/1.2.2/velocity.ui.min.js'></script>		
-		<script  src="<?php echo base_url('assets/js/login');?>"></script>
+		<script  src="<?php echo base_url('assets/js/addarticle');?>"></script>
 
 
 

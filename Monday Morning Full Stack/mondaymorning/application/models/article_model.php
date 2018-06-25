@@ -30,4 +30,8 @@ class article_model extends CI_Model {
 		$this->db->where('id',$id);
 		return $this->db->delete('articles');
 	}
+	function get_article_by_category($category){
+		$query=$this->db->get_where('articles',array('Category'=>$category));
+		return $query;
+	}
 }

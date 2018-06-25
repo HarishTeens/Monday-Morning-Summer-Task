@@ -9,7 +9,7 @@
 		<link rel="stylesheet" type="text/css" href="<?php echo base_url("assets/cs/homepage.css")?>">
 		<title>Monday Morning - The official student media body of NIT Rourkela</title>
 	</head>
-	<body>
+	<body data-spy="scroll" data-target="#myScrollspy" data-offset="0">
 		<nav class="navbar navbar-default" id="main-nav">
 				<div class="container-fluid">			
 					<div>
@@ -55,8 +55,8 @@
 				
 				</div>
 			</div>
-			<div class="container" id="fullpage">
-				<div class="section row">
+			<div class="container">
+				<div class="row">
 					
 						<div class="col-lg-12">
 							<div class="heading">
@@ -67,136 +67,136 @@
 
 							<!-- Body part goes here -->			
 							<div class="editors-pick">
-								<div class="picks animated flipInX active">
-									<img class=" " src="<?php echo base_url("assets/img/test1.jpg")?>">
-									<div>
-										<h1>Category Name1</h1>
-										<h1>Authors of this article</h1>
-										<h1>Brief description of this article</h1>
-									</div>
-								</div>
-								<div class="picks animated">
-									<img class="" src="<?php echo base_url("assets/img/test2.jpg")?>">
-									<div>
-										<h1>Category Name2</h1>
-										<h1>Authors of this article</h1>
-										<h1>Brief description of this article</h1>
-									</div>
-								</div>
-								<div class="picks animated">
-									<img class="" src="<?php echo base_url("assets/img/test3.jpg")?>">
-									<div>
-										<h1>Category Name3</h1>
-										<h1>Authors of this article</h1>
-										<h1>Brief description of this article</h1>
-									</div>
-								</div>				
+								<h1 style="margin-top: -25px; font-size:40px; text-align: center;"><b>EDITORS'S PICK</b></h1>
+								<?php for($i=0;$i<$editorspick->num_rows();$i++) {
+								$row=$editorspick->result()[$i]; ?>
+
+									<div class="row picks animated <?php if($i==0){echo 'flipInX active';} ?>">
+										<div class="col-md-6 thumbnail" >
+											<img src="<?php echo base_url("assets/img/uploads/").$row->Image ?>">	
+										</div>										
+										<div class="col-md-6">
+											<h1><?php echo $row->Author; ?></h1>
+											<h1><?php echo $row->Title; ?></h1>
+										</div>
+									</div>	
+								<?php } ?>
+								
+								
 							</div>				
 						</div>
 					
 				</div>
-
-				<?php 
-				$var2=0;
-				$rows=$articles->num_rows();
-				$sections=$rows%3==0 ? $rows/3 : $rows/3+1;
-				for($var1=1;$var1<=$sections;$var1++){ ?>
-					<div class="section row">
-							<div class="row">
-								<div class="col-md-9">
-									<?php for (;$var2<3*$var1&&$var2<$rows;$var2++) { 
-										$row=$articles->result()[$var2];
-										?>
-									<div class="col-lg-4 article">
-										<div class="thumbnail">
-											<a  href="<?php echo base_url('articles/view/'.$row->slug) ;?>">
-												<img id="article-img" src="<?php echo base_url("assets/img/uploads/").$row->Image ?>">
-											</a>	
-										</div>	
-										<div class="details">
-												<h3><b><?php  echo $row->Title;?></b></h3>
-												<h3><?php echo $row->Category ?></h3>
-												<h2><?php echo $row->Author ?></h2>
-												<h4>date and place</h4>
-												<h3><?php echo $row->Content ?></h3>
-										</div>
-									</div>	
-									<?php }	?>	
-								</div>
-								<?php if($var1==1){ ?>
-								<div class="col-md-3 aside">
-									<div id="before-vote">
-										<h1 style="text-align: center;">Poll</h1>
-										<h3><?php echo $poll->question.' ?'; ?></h3>
-										<form class="ajax" action="<?php echo base_url('polls/vote/'.$poll->id) ?>" method="post">
-											<h3>
-												<input type="radio" name="vote" value="answer_1">
-												<?php echo $this->answer_model->get_answer($poll->answer_1)['answer'] ?>
-											</h3>
-											<h3>
-												<input type="radio" name="vote" value="answer_2">
-												<?php echo $this->answer_model->get_answer($poll->answer_2)['answer'] ?>
-											</h3>
-											<h3>
-												<input type="radio" name="vote" value="answer_3">
-												<?php echo $this->answer_model->get_answer($poll->answer_3)['answer'] ?>
-											</h3>
-											<button type="submit" class="btn btn-info btn-lg">
-												VOte
-											</button>
-										</form>
-									</div>
-									<div id="after-vote">
-										<h1 style="text-align: center;">Poll Analysis</h1>
-										<h3><?php echo $poll->question.' ?'; ?></h3>
-										<div class="answers">
-											<?php 
-												$answer[0]=$this->answer_model->get_answer($poll->answer_1);
-												$answer[1]=$this->answer_model->get_answer($poll->answer_2);
-												$answer[2]=$this->answer_model->get_answer($poll->answer_3);
-												$total_votes=0;
-												for($i=0;$i<3;$i++){
-													$total_votes+=$answer[$i]['votes'];
-												}	
-												for($i=0;$i<3;$i++){ 
-												$original_string=$answer[$i]['answer'];
-												$limited_string = word_limiter( $original_string,7, ' ');
-												$rest_of_string = trim(str_replace($limited_string, "", $original_string));
-												?>
-											<div class="answer">
-												<div class="ans">
-													<?php 
-													echo $limited_string;
-													$rest_of_string = 
-													trim(str_replace($limited_string, "", $original_string));
-													if($rest_of_string){
-														echo '....';
-													}
-													?>
-												</div>
-												<div class="status-bar row">
-													<div class="bar-limiter col-md-10">
-														<div class="<?php echo 'bar-value'.$i ; ?>  " >
-
-														</div>
-													</div>
-													<div style="padding-left: 5px;" class="bar-info col-md-2" data-index="<?php echo $i+1; ?>" data-vote="<?php echo $answer[$i]['votes']; ?>"
-													data-total-votes="<?php echo $total_votes; ?>">
-														
-													</div>
-												</div>
+				<div class="row">
+					<div class="categories col-md-9">
+						<?php 
+							$categories = array('departments','campus','views','career');
+						?>
+						<?php foreach ($categories as $category) { ?>
+							<div class="<?php echo $category; ?>">						
+								<h1 style="margin-top: 0px;"><b style="text-transform: uppercase;"><?php echo $category; ?></b></h1>
+								<?php 
+								$var2=0;
+								$rows=$categ[$category]->num_rows();
+								$sections=$rows%3==0 ? $rows/3 : $rows/3+1;
+								for($var1=1;$var1<=$sections;$var1++){ ?>
+									<div class="row">
+									<?php 
+										for (;$var2<3*$var1&&$var2<$rows;$var2++) { 
+										$row=$categ[$category]->result()[$var2]; 
+									?>
+										<div class="col-lg-4 article">
+											<div class="thumbnail">
+												<a  href="<?php echo base_url('articles/view/'.$row->slug) ;?>">
+													<img id="article-img" src="<?php echo base_url("assets/img/uploads/").$row->Image ?>">
+												</a>	
+											</div>	
+											<div class="details">
+												<h4><b><?php  echo $row->Title;?></b></h4>
+												<h4><?php echo $row->Category ?></h4>
+												<h4><?php echo $row->Author ?></h4>
+												<h5><?php echo $row->updated_at; ?></h5>
+												<h4><?php echo $row->Excerpt ?></h4>
 											</div>
-											<?php } ?>
-											
+										</div>	
+									<?php } ?>
+									</div>
+									<?php }	?>	
+							</div>						
+						<?php } ?>
+						
+					</div>
+					<div class="col-md-3 aside"  id="myScrollspy">
+						<div id="before-vote" data-spy="affix" data-offset-top="700">
+							<h1 style="text-align: center;">Poll</h1>
+							<h3><?php echo $poll->question.' ?'; ?></h3>
+							<form class="ajax" action="<?php echo base_url('polls/vote/'.$poll->id) ?>" method="post">
+								<h3>
+									<input type="radio" name="vote" value="answer_1">
+									<?php echo $this->answer_model->get_answer($poll->answer_1)['answer'] ?>
+								</h3>
+								<h3>
+									<input type="radio" name="vote" value="answer_2">
+									<?php echo $this->answer_model->get_answer($poll->answer_2)['answer'] ?>
+								</h3>
+								<h3>
+									<input type="radio" name="vote" value="answer_3">
+									<?php echo $this->answer_model->get_answer($poll->answer_3)['answer'] ?>
+								</h3>
+								<button type="submit" class="btn btn-info btn-lg">
+									VOte
+								</button>
+							</form>
+						</div>
+						<div id="after-vote" data-spy="affix" data-offset-top="700">
+							<h1 style="text-align: center;">Poll Analysis</h1>
+							<h3><?php echo $poll->question.' ?'; ?></h3>
+							<div class="answers">
+								<?php 
+									$answer[0]=$this->answer_model->get_answer($poll->answer_1);
+									$answer[1]=$this->answer_model->get_answer($poll->answer_2);
+									$answer[2]=$this->answer_model->get_answer($poll->answer_3);
+									$total_votes=0;
+									for($i=0;$i<3;$i++){
+										$total_votes+=$answer[$i]['votes'];
+									}	
+									for($i=0;$i<3;$i++){ 
+									$original_string=$answer[$i]['answer'];
+									$limited_string = word_limiter( $original_string,7, ' ');
+									$rest_of_string = trim(str_replace($limited_string, "", $original_string));
+								?>
+								<div class="answer">
+									<div class="ans">
+									<?php 
+										echo $limited_string;
+										$rest_of_string = 
+										trim(str_replace($limited_string, "", $original_string));
+										if($rest_of_string){
+											echo '....';
+										}
+									?>
+									</div>
+									<div class="status-bar row">
+										<div class="bar-limiter col-md-10">
+											<div class="<?php echo 'bar-value'.$i ; ?>  " >
+													</div>
 										</div>
-									</div>	
-																	
+										<div style="padding-left: 5px;" class="bar-info col-md-2" data-index="<?php echo $i+1; ?>" data-vote="<?php echo $answer[$i]['votes']; ?>" data-total-votes="<?php echo $total_votes; ?>">
+															
+										</div>
+									</div>
 								</div>
 								<?php } ?>
 							</div>
+						</div>	
+					</div>
 				</div>
-				<?php }	 ?>
-			</div>
+				
+
+
+				</div>
+				<!-- container closing				 -->
+			
 			
 
 

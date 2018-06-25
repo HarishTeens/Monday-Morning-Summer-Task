@@ -110,10 +110,11 @@ body{
 	text-align: center;	width: 300px;
 }
 .form-group{
-	display: inline-block;
+	display: block;
 }
-.form-group>input{
-	width: 300px;
+.form-group>input,.form-group>select{
+
+	width: 100%;
 	height: 50px;
 	padding: 10px;	
 	background: #2d3436;

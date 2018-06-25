@@ -18,11 +18,11 @@ class articles extends CI_Controller {
 			$data['user_id']=$this->session->userdata('id');
 			$data['username']=$this->session->userdata('username');
 		}
-		$this->form_validation->set_rules('title','Post Title','required|alpha_numeric_spaces');	
-		$this->form_validation->set_rules('category','Post Category','required|alpha_numeric_spaces');			
-		$this->form_validation->set_rules('author','Post Author','required|alpha_numeric_spaces');			
+		$this->form_validation->set_rules('title','Post Title','required');	
+		$this->form_validation->set_rules('category','Post Category','required');			
+		$this->form_validation->set_rules('author','Post Author','required');			
 		$this->form_validation->set_rules('content','Post Content','required');	
-		$this->form_validation->set_rules('excerpt','Post Excerpt','required');
+		$this->form_validation->set_rules('excerpt','Post Excerpt','');
 		if($this->form_validation->run()==FALSE)			
 		{
 			$this->load->view('articles/add',$data);
@@ -115,11 +115,11 @@ class articles extends CI_Controller {
         if (empty($id)) {
             show_404();
         }    
-		$this->form_validation->set_rules('title','Post Title','required|alpha_numeric_spaces');	
-		$this->form_validation->set_rules('category','Post Category','required|alpha_numeric_spaces');			
-		$this->form_validation->set_rules('author','Post Author','required|alpha_numeric_spaces');			
+		$this->form_validation->set_rules('title','Post Title','required');	
+		$this->form_validation->set_rules('category','Post Category','required');			
+		$this->form_validation->set_rules('author','Post Author','required');			
 		$this->form_validation->set_rules('content','Post Content','required');	
-		$this->form_validation->set_rules('excerpt','Post Excerpt','required');
+		$this->form_validation->set_rules('excerpt','Post Excerpt','');
 		if($this->form_validation->run()==FALSE)			
 		{
 			$data['article']=$this->article_model->get_article_by_id($id);
