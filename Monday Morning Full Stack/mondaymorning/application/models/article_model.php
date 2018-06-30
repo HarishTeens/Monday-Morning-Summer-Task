@@ -30,8 +30,28 @@ class article_model extends CI_Model {
 		$this->db->where('id',$id);
 		return $this->db->delete('articles');
 	}
-	function get_article_by_category($category){
-		$query=$this->db->get_where('articles',array('Category'=>$category));
+	function get_article_by_tab($tab,$limit=12){
+		$queryy=$this->db->get_where('tabs',array('tab_slug'=>$tab))->row_array();
+		$value=$queryy['tab_name'];
+		$query=$this->db
+		->where('Tab',$value)		
+		->limit($limit)
+		->get('articles');		
+
+		return $query;
+	}
+	function get_article_by_category($category,$limit=12){		
+		$queryy=$this->db->get_where('categories',array('category_slug'=>$category))->row_array();
+		$value=$queryy['category_name'];
+		$query=$this->db
+		->where('Category',$value)		
+		->limit($limit)
+		->get('articles');		
+
+		return $query;
+	}
+	function featured_article(){
+		$query=$this->db->get_where('articles',array('featured'=>1));
 		return $query;
 	}
 	function increment_views($id){

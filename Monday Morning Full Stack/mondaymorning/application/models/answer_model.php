@@ -23,5 +23,6 @@ class answer_model extends CI_Model {
 		$this->db->where('id', $id);
 		$this->db->set('votes', 'votes+1', FALSE);
 		$this->db->update('answers');
+		return 1;
 	}
 }

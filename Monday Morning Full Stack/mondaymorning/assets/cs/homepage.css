@@ -168,7 +168,8 @@ body{
 .article{
 	height: 100%;
 	margin-bottom: 50px;
-
+	max-height: 407px;
+    overflow: hidden;
 }
 .details>h4,.details>h5{
 	margin: 5px auto;

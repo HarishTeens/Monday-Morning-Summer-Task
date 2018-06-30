@@ -88,22 +88,22 @@
 					
 				</div>
 				<div class="row">
-					<div class="categories col-md-9">
+					<div class="tabs col-md-9">
 						<?php 
-							$categories = array('departments','campus','views','career');
+							$tabs = array('departments','campus','views','career');
 						?>
-						<?php foreach ($categories as $category) { ?>
-							<div class="<?php echo $category; ?>">						
-								<h1 style="margin-top: 0px;"><b style="text-transform: uppercase;"><?php echo $category; ?></b></h1>
+						<?php foreach ($tabs as $tab) { ?>
+							<div class="<?php echo $tab; ?>">						
+								<h1 style="margin-top: 0px;"><b style="text-transform: uppercase;"><?php echo $tab; ?></b></h1>
 								<?php 
 								$var2=0;
-								$rows=$categ[$category]->num_rows();
+								$rows=$tabb[$tab]->num_rows();
 								$sections=$rows%3==0 ? $rows/3 : $rows/3+1;
 								for($var1=1;$var1<=$sections;$var1++){ ?>
 									<div class="row">
 									<?php 
 										for (;$var2<3*$var1&&$var2<$rows;$var2++) { 
-										$row=$categ[$category]->result()[$var2]; 
+										$row=$tabb[$tab]->result()[$var2]; 
 									?>
 										<div class="col-lg-4 article">
 											<div class="thumbnail">
@@ -113,7 +113,7 @@
 											</div>	
 											<div class="details">
 												<h4><b><?php  echo $row->Title;?></b></h4>
-												<h4><?php echo $row->Category ?></h4>
+												<h4><?php echo $row->Tab ?></h4>
 												<h4><?php echo $row->Author ?></h4>
 												<h5><?php echo $row->updated_at; ?></h5>
 												<h4><?php echo $row->Excerpt ?></h4>
@@ -127,7 +127,7 @@
 						
 					</div>
 					<div class="col-md-3 aside"  id="myScrollspy">
-						<div id="before-vote" data-spy="affix" data-offset-top="700">
+						<div id="before-vote" data-spy="affix" data-offset-top="680">
 							<h1 style="text-align: center;">Poll</h1>
 							<h3><?php echo $poll->question.' ?'; ?></h3>
 							<form class="ajax" action="<?php echo base_url('polls/vote/'.$poll->id) ?>" method="post">
@@ -148,7 +148,7 @@
 								</button>
 							</form>
 						</div>
-						<div id="after-vote" data-spy="affix" data-offset-top="700">
+						<div id="after-vote" data-spy="affix" data-offset-top="680">
 							<h1 style="text-align: center;">Poll Analysis</h1>
 							<h3><?php echo $poll->question.' ?'; ?></h3>
 							<div class="answers">

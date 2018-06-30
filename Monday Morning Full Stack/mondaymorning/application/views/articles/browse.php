@@ -43,7 +43,7 @@
 						</div>
 						<div class="article-details">						
 							<div id="sub-details">
-								<h3 id="category"><?php echo $row->Category; ?></h3>							
+								<h3 id="category"><?php echo $row->Tab; ?></h3>							
 								<h3 ><span id="by">by</span> <span id="author"><?php echo $row->Author; ?></span></h3>	
 							</div>
 							<br>

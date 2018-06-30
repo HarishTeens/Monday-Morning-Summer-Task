@@ -4,6 +4,7 @@
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 		<link rel="shortcut icon" type="image/png" href="<?php echo base_url('assets/img/favicon.png')?> ">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+
 		<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/cs/animate.css')?> ">
 		<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/cs/addarticle.css') ?>">
 		<title>Monday Morning - The official student media body of NIT Rourkela</title>
@@ -43,20 +44,27 @@
 					</div>
 					<div class="form-group">
 						<input class="form-control" type="text" name="author" placeholder="Author name goes here">
-					</div>
+					</div>							
+					<!-- <div class="form-group">
+						<?php foreach ($categories as $category) { ?>
+									<input type="checkbox" value="<?php echo $category->category_name; ?>" name="category">
+										<?php echo $category->category_name; ?>
+									
+							<?php } ?>									
+					</div>			 -->
 					<div class="form-group">
-						<select id='category' class="form-control" name="category">
+						<select id='tab' class="form-control" name="tab">
 							<option value="">Category</option>
-							<option value="Department">Department</option>
-							<option value="Campus">Campus</option>
-							<option value="DD & CWC">DD & CWC</option>
-							<option value="Views">Views</option>
-							<option value="Career">Career</option>
-							<option value="Alumini">Alumini</option>							
+							<?php 
+								$index=0;
+								foreach ($tabs as $tab) { 
+									?>
+								<option value="<?php echo $tab->tab_name; ?>"><?php echo $tab->tab_name; ?></option>
+							<?php $index++; } ?>	
 						</select>
 					</div>					
 					<div class="form-group">
-						<select id='department' class="sub-category form-control" name="sub-category">							
+						<select id='department' class="category form-control" name="category">							
 							<option value="">Sub-Category</option>
 							<option value="Biotechnology and Biomedical Engineering">Biotechnology and Biomedical Engineering</option>
 							<option value="Ceramic Engineering">Ceramic Engineering</option>
@@ -83,7 +91,7 @@
 						</select>
 					</div>
 					<div class="form-group">
-						<select id='campus' class="sub-category form-control" name="sub-category">
+						<select id='campus' class="category form-control" name="category">
 							<option value="">Sub-Category</option>
 							<option value="SAC Speaks">SAC Speaks</option>
 							<option value="Campus Buzz">Campus Buzz</option>
@@ -96,7 +104,7 @@
 						</select>
 					</div>
 					<div class="form-group">
-						<select id='views' class="sub-category form-control" name="sub-category">
+						<select id='views' class="category form-control" name="category">
 							<option value="">Sub-Category</option>
 							<option value="Interview">Interview</option>
 							<option value="The CGPA">The CGPA</option>
@@ -109,7 +117,7 @@
 						</select>
 					</div>
 					<div class="form-group">
-						<select id='career' class="sub-category form-control" name="sub-category">
+						<select id='career' class="category form-control" name="category">
 							<option value="">Sub-Category</option>
 							<option value="Placements">Placements</option>
 							<option value="Recruitment Feedback">Recruitment Feedback</option>
@@ -119,7 +127,7 @@
 						</select>
 					</div>
 					<div class="form-group">
-						<select id='alumini' class="sub-category form-control" name="sub-category">
+						<select id='alumini' class="category form-control" name="category">
 							<option value="">Sub-Category</option>
 							<option value="Alumnus Speaks">Alumnus Speaks</option>
 							<option value="Happenings">Happenings</option>
@@ -128,12 +136,13 @@
 						</select>
 					</div>
 					<div class="form-group">
-						<select id='ddncwc' class="sub-category form-control" name="sub-category">
+						<select id='ddncwc' class="category form-control" name="category">
 							<option value="">Sub-Category</option>
 							<option value="Director's Desk">Director's Desk</option>
 							<option value="Chief Warden's Column">Chief Warden's Column</option>
 						</select>
-					</div>					
+					</div>			
+							
 					<div class="form-group">
 						<input class="form-control" type="file" name="image" >
 					</div>
@@ -210,6 +219,7 @@
 		<script src='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js'></script>
 		<script src='https://cdnjs.cloudflare.com/ajax/libs/velocity/1.2.2/velocity.min.js'></script>
 		<script src='https://cdnjs.cloudflare.com/ajax/libs/velocity/1.2.2/velocity.ui.min.js'></script>		
+		
 		<script  src="<?php echo base_url('assets/js/addarticle');?>"></script>
 
 

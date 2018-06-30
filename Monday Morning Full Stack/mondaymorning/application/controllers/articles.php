@@ -19,12 +19,15 @@ class articles extends CI_Controller {
 			$data['username']=$this->session->userdata('username');
 		}
 		$this->form_validation->set_rules('title','Post Title','required');	
-		$this->form_validation->set_rules('category','Post Category','required');			
-		$this->form_validation->set_rules('author','Post Author','required');			
+		//$this->form_validation->set_rules('category','Post Category','required');			
+		$this->form_validation->set_rules('author','Post Author','required');	
+		//$this->form_validation->set_rules('tab','Tab Name','required');
 		$this->form_validation->set_rules('content','Post Content','required');	
 		$this->form_validation->set_rules('excerpt','Post Excerpt','');
 		if($this->form_validation->run()==FALSE)			
 		{
+			$data['tabs']=$this->category_model->tabs();
+			$data['categories']=$this->category_model->categories();
 			$this->load->view('articles/add',$data);
 		}
 		else
@@ -40,12 +43,14 @@ class articles extends CI_Controller {
 			{
 				$data = array(
 					'Title' => $this->input->post("title"),
-					'Category' => $this->input->post("category"),
+					'Category' => $this->input->post('category'),
+					'Tab'=>$this->input->post("tab"),
 					'Author' => $this->input->post("author"),
 					'Content' => $this->input->post("content"),
 					'Excerpt' => $this->input->post("excerpt"),
 					'user_id'=>$this->input->post('id')	
 				 );				
+				
 				$filedata=$this->upload->data();
 				$data['Image']=$filedata['file_name'];
 				date_default_timezone_set('Asia/Kolkata');
@@ -117,13 +122,16 @@ class articles extends CI_Controller {
             show_404();
         }    
 		$this->form_validation->set_rules('title','Post Title','required');	
-		$this->form_validation->set_rules('category','Post Category','required');			
+		$this->form_validation->set_rules('category','Post Category','required');					
+		$this->form_validation->set_rules('tab','Tab Name','required');
 		$this->form_validation->set_rules('author','Post Author','required');			
 		$this->form_validation->set_rules('content','Post Content','required');	
 		$this->form_validation->set_rules('excerpt','Post Excerpt','');
 		if($this->form_validation->run()==FALSE)			
 		{
 			$data['article']=$this->article_model->get_article_by_id($id);
+			$data['tabs']=$this->category_model->tabs();
+			$data['categories']=$this->category_model->categories();
 			$this->load->view('articles/edit',$data);
 		}
 		else
@@ -140,6 +148,7 @@ class articles extends CI_Controller {
 				$data = array(
 					'Title' => $this->input->post("title"),
 					'Category' => $this->input->post("category"),
+					'Tab'=>$this->input->post('tab'),
 					'Author' => $this->input->post("author"),
 					'Content' => $this->input->post("content"),
 					'Excerpt' => $this->input->post("excerpt"),
@@ -185,7 +194,7 @@ class articles extends CI_Controller {
 			redirect('admin');
 		}
 
-	}
+	}	
         
 }
 
