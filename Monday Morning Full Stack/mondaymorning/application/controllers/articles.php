@@ -47,20 +47,20 @@ class articles extends CI_Controller {
 			if($this->upload->do_upload('image'))
 			{
 				$data = array(
-					'Title' => $this->input->post("title"),
-					'Category' => $this->input->post('category'),
-					'Tab'=>$this->input->post("tab"),
-					'Author' => $this->input->post("author"),
-					'Content' => $this->input->post("content"),
-					'Excerpt' => $this->input->post("excerpt"),
-					'user_id'=>$this->input->post('id')	
+					'Title' => $this->input->post("title",TRUE),
+					'Category' => $this->input->post('category',TRUE),
+					'Tab'=>$this->input->post("tab",TRUE),
+					'Author' => $this->input->post("author",TRUE),
+					'Content' => $this->input->post("content",TRUE),
+					'Excerpt' => $this->input->post("excerpt",TRUE),
+					'user_id'=>$this->input->post('id',TRUE)	
 				 );				
 				
 				$filedata=$this->upload->data();
 				$data['Image']=$filedata['file_name'];
 				date_default_timezone_set('Asia/Kolkata');
 				$data['updated_at']= date("Y-m-d H:i:s");
-				$data['slug']=url_title($this->input->post('title'),'dash',TRUE);
+				$data['slug']=url_title($this->input->post('title',TRUE),'dash',TRUE);
 				
 				if($this->article_model->set_article($data)){
 					$this->session->set_flashdata('msg','Successfully inserted');
@@ -152,20 +152,20 @@ class articles extends CI_Controller {
 			if($this->upload->do_upload('image'))
 			{
 				$data = array(
-					'Title' => $this->input->post("title"),
-					'Category' => $this->input->post("category"),
-					'Tab'=>$this->input->post('tab'),
-					'Author' => $this->input->post("author"),
-					'Content' => $this->input->post("content"),
-					'Excerpt' => $this->input->post("excerpt"),
-					'user_id'=>$this->input->post('user_id')	
+					'Title' => $this->input->post("title",TRUE),
+					'Category' => $this->input->post("category",TRUE),
+					'Tab'=>$this->input->post('tab',TRUE),
+					'Author' => $this->input->post("author",TRUE),
+					'Content' => $this->input->post("content",TRUE),
+					'Excerpt' => $this->input->post("excerpt",TRUE),
+					'user_id'=>$this->input->post('user_id',TRUE)	
 				 );				
 				$filedata=$this->upload->data();
 				$data['Image']=$filedata['file_name'];
 				date_default_timezone_set('Asia/Kolkata');
 				$data['updated_at']= date("Y-m-d H:i:s");
-				$data['slug']=url_title($this->input->post('title'),'dash',TRUE);	
-				$id=$this->input->post('id');
+				$data['slug']=url_title($this->input->post('title',TRUE),'dash',TRUE);	
+				$id=$this->input->post('id',TRUE);
 				if($this->article_model->set_article($data,$id)){
 					$this->session->set_flashdata('msg','Successfully Edited');
 					redirect('admin');

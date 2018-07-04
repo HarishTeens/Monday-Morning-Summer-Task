@@ -6,9 +6,9 @@ class ajaxsearch extends CI_Controller {
 	public function search(){
 		$output="";
 		$query="";
-		if($this->input->post('query'))
+		if($this->input->post('query',TRUE))
 		{
-			$query=$this->input->post('query');
+			$query=$this->input->post('query',TRUE);
 		}
 		$data=$this->ajaxsearch_model->fetch_data($query);
 		$output.='<div class="row" style="width: 150%; margin-left: -25%;">';

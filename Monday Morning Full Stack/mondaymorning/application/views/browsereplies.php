@@ -34,13 +34,19 @@
 				<h1 id="sideline">Raise your voice..!</h1>		
 			</div>			
 			<div class="body-section">
-				<ul class="articles" type="none">
+				<ul class="comments" type="none">
 					<?php foreach ($replies->result() as $row){ ?>
 					<li class="comment row">						
 							<h3 style="display: inline-block;">
 								<b><?php echo $row->username ?></b>
 								 had replied
-								<p style="display: inline-block; font-size: 20px;"><?php echo '" '.$row->Content.' "' ?></p>
+								<div class="dbclick" style="display: inline-block; font-size: 20px;"><?php echo '" '.$row->Content.' "' ?></div>
+								<div class="editform" style="z-index:1; display: none;">
+									<form class="ajax2" action="<?php echo base_url('reply/edit/'.$row->id) ?>" method="post">
+									<input type="text" name="reply" value="<?php echo $row->Content; ?>">
+									
+									</form>
+								</div>
 								  on 
 								<b>
 								 	<a href="<?php 
@@ -63,8 +69,12 @@
 							 			echo "checked";
 							 			} ?> >Disapprove
 
-							 	</form>
-							 </div>							 
+							 	</form>							 	
+							 	<button onclick="return confirm('Are You sure you want to delete?')" class="btn btn-danger"><a href="<?php echo base_url('reply/delete/'.$row->id) ?>" style="color: white;">Delete</a></button>
+							 </div>	
+							 <div class="editmsg" style="float: right; color: red; margin-top: -55px; display: none;">
+							 	<h3>double click on reply to edit</h3>
+							 </div>						 						 
 					</li>
 					<?php } ?>					
 				</ul>				

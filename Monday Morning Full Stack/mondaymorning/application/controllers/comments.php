@@ -20,7 +20,7 @@ class comments extends CI_Controller {
 		if($this->form_validation->run())
 		{
 			$data=array(
-				'Content'=>$this->input->post('comment'),
+				'Content'=>$this->input->post('comment',TRUE),
 				'article_id'=>$post_id,				
 				);
 			$data['user_id']=$this->session->userdata('id');
@@ -35,6 +35,23 @@ class comments extends CI_Controller {
 				redirect('articles/view/'.$post_slug);
 			}
 		}
+	}
+	public function edit($id)
+	{	
+		if(!$this->session->userdata('is_logged_in'))
+		{
+			$this->session->set_flashdata('msg','You must be logged in to do that');
+			redirect('users/login');
+		} 
+		else
+		{
+			$data['user_id']=$this->session->userdata('id');
+			$data['username']=$this->session->userdata('username');
+		}
+		$comment=$this->input->post('comment',TRUE);
+		$this->comment_model->update_comment($comment,$id);
+		echo $comment;
+		
 	}
 	public function browse()
 	{
@@ -56,6 +73,31 @@ class comments extends CI_Controller {
 		$data['comments']=$this->comment_model->get_comments();
 		$this->load->view("browsecomments",$data);
 	}
+	public function delete($id)
+	{
+		if(!$this->session->userdata('is_logged_in'))
+		{
+			$this->session->set_flashdata('msg','You must be logged in to do that');
+			redirect('users/login');
+		} 
+		else
+		{
+			$data['user_id']=$this->session->userdata('id');
+			$data['username']=$this->session->userdata('username');			
+		}
+		$data['admin']=$this->user_model->get_user($data['user_id']);
+		if($data['admin']['access_level']!='admin'){
+			$this->session->set_flashdata('msg','You must be Admin to do that');
+			redirect('home');
+		}
+		if($this->comment_model->delete_comment($id)){
+			$this->session->set_flashdata('msg','Successfully Deleted');
+			redirect('admin');
+		} else {
+			$this->session->set_flashdata('msg','Error Try again');
+			redirect('admin');
+		}
+	}
 	public function approve($id)
 	{
 		if(!$this->session->userdata('is_logged_in'))
@@ -73,9 +115,9 @@ class comments extends CI_Controller {
 			$this->session->set_flashdata('msg','You must be Admin to do that');
 			redirect('home');
 		}
-		$value=$this->input->post('approved');
+		$value=$this->input->post('approved',TRUE);
 		$this->comment_model->approve($id,$value);
-		return 'success';
+		echo 'success';
 	}
 }
 		

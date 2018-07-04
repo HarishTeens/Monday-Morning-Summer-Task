@@ -96,7 +96,7 @@
 						?>
 						<?php foreach ($tabs as $tab) { ?>
 							<div class="<?php echo $tab; ?>">						
-								<h1 style="margin-top: 0px;"><b style="text-transform: uppercase;"><?php echo $tab; ?></b></h1>
+								<h1 style="margin-top: 0px; color: #0984e3;"><b style="text-transform: uppercase;"><?php echo $tab; ?></b></h1>
 								<?php 
 								$var2=0;
 								$rows=$tabb[$tab]->num_rows();

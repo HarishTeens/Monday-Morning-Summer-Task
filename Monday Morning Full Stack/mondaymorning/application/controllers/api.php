@@ -242,8 +242,8 @@ class api extends CI_Controller {
 
 	}
 	public function signin(){
-		$email=$this->input->post('username');	
-		$password=$this->input->post('password');
+		$email=$this->input->post('username',TRUE);	
+		$password=$this->input->post('password',TRUE);
 		$return = new stdClass();
 		
 		if($user=$this->user_model->get_user_login($email,$password))
@@ -267,7 +267,7 @@ class api extends CI_Controller {
 
 	}
 	public function getmultipleposts(){
-		$ids=$this->input->post('post_ids');
+		$ids=$this->input->post('post_ids',TRUE);
 		$i=0;
 		foreach ($ids as $id) {
 			$articles[$i]=$this->article_model->get_article_by_id($id);
@@ -289,8 +289,8 @@ class api extends CI_Controller {
 
 	}
 	public function submitpoll(){
-		$poll_id=$this->input->post('poll_id');
-		$answer_id=$this->input->post('answer_id');
+		$poll_id=$this->input->post('poll_id',TRUE);
+		$answer_id=$this->input->post('answer_id',TRUE);
 
 		$return = new stdClass();
 		if($this->poll_model->get_poll_by_id($poll_id)==FALSE){
@@ -307,20 +307,20 @@ class api extends CI_Controller {
 		$this->load->view('api',$data);
 	}
 	public function submitcomment(){
-		$post_id=$this->input->post('post_id');
+		$post_id=$this->input->post('post_id',TRUE);
 		$return = new stdClass();
 		if($this->article_model->get_article_by_id($post_id)==FALSE){
 			$return->error_log='Post Not found';
 			$return->success=false;
 		} else{
-			$user_id=$this->input->post('user_id');
+			$user_id=$this->input->post('user_id',TRUE);
 			if($this->user_model->get_user($user_id)==FALSE){
 				$return->error_log='User Not found';
 				$return->success=false;
 			} else {
 				$user=$this->user_model->get_user($user_id);
-				$reply_to_comment=$this->input->post('comment_id');
-				$comment=$this->input->post('comment');
+				$reply_to_comment=$this->input->post('comment_id',TRUE);
+				$comment=$this->input->post('comment',TRUE);
 				if($reply_to_comment==FALSE){
 					$send['Content']=$comment;
 					$send['user_id']=$user_id;

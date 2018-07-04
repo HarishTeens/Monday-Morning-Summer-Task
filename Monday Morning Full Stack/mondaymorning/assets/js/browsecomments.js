@@ -3,6 +3,7 @@ $(".modal").each(function(l){$(this).on("show.bs.modal",function(l){var o=$(this
 	
 $(document).ready(function() { 
 
+
 	//se
 	load_data();
 	function on() {    
@@ -48,6 +49,27 @@ $(document).ready(function() {
 
   });
 
+$('.dbclick').dblclick(function(){
+	var that=$(this);
+	
+	var x=$(this).parent().children()[2];	
+	$('.editform').hide();
+	$('.dbclick').show();
+	that.hide();
+	$(x).show().css('display','inline-block');
+
+});
+
+
+$('.editform').keyup(function(e){
+	if(e.keyCode==27){
+		$('.editform').hide();
+		$('.dbclick').show();
+
+	}
+		
+})
+
 $('form.ajax').on('submit',function(){
 	var that=$(this),
 		method=that.attr('method'),
@@ -64,8 +86,7 @@ $('form.ajax').on('submit',function(){
 		}
 	})
 	$.ajax({
-		url:url,
-		type:'ajax',
+		url:url,		
 		method:method,
 		data:data,		
 	   	dataType:"JSON",
@@ -81,4 +102,44 @@ $('form.ajax').on('submit',function(){
 
 	return false;
 })
+$('.comment').hover(function(){
+	var that=$(this).children()[2];
+	$(that).fadeToggle();
+})
 
+$('form.ajax2').on('submit',function(){
+	var that=$(this),
+		method=that.attr('method'),
+		url=that.attr('action'),
+		data={};
+	that.find('input').each(function(){
+		var that=$(this);
+		name=that.attr('name');
+		value=that.val();
+		data[name]=value;
+		
+	});
+	$.ajax({
+		url:url,		
+		method:method,
+		data:data,			   	
+		success: function(response){
+			$('.editform').each(function(){
+				var that=$(this);
+				if(that.css('display')=='inline-block'){
+					var x=that.parent().children()[1];
+					
+					x.innerHTML=' " '+response+' " ';
+
+				}
+			})
+			$('.editform').hide();
+			$('.dbclick').show();
+
+		}
+
+
+	});
+
+	return false;
+})

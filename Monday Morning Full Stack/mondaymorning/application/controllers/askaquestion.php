@@ -17,8 +17,8 @@ class askaquestion extends CI_Controller {
 	}
 	public function ask(){
 		$data=array(
-				'question'=>$this->input->post('question'),
-				'authority'=>$this->input->post('authority')
+				'question'=>$this->input->post('question',TRUE),
+				'authority'=>$this->input->post('authority',TRUE)
 			);
 		date_default_timezone_set('Asia/Kolkata');
 		$data['updated_at']= date("Y-m-d H:i:s");

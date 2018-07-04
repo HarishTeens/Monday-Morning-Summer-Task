@@ -37,8 +37,8 @@ class users extends CI_Controller {
 		}
 		else
 		{
-			$email=$this->input->post('email');
-			$password=$this->input->post('password');
+			$email=$this->input->post('email',TRUE);
+			$password=$this->input->post('password',TRUE);
 			if($user=$this->user_model->get_user_login($email,$password))
 			{
 				$this->session->set_userdata('username',$user['firstname']);

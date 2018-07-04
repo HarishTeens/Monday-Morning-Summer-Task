@@ -32,14 +32,14 @@ class polls extends CI_Controller {
 		}
 		else
 		{
-			$data1['answer'] = $this->input->post("answer_one");
+			$data1['answer'] = $this->input->post("answer_one",TRUE);
 			$id1=$this->answer_model->set_answer($data1);
-			$data2['answer'] = $this->input->post("answer_two");
+			$data2['answer'] = $this->input->post("answer_two",TRUE);
 			$id2=$this->answer_model->set_answer($data2);
-			$data3['answer'] = $this->input->post("answer_three");
+			$data3['answer'] = $this->input->post("answer_three",TRUE);
 			$id3=$this->answer_model->set_answer($data3);
 				$data = array(
-					'question' => $this->input->post("question"),
+					'question' => $this->input->post("question",TRUE),
 					'answer_1' => $id1,
 					'answer_2' => $id2,
 					'answer_3' => $id3
@@ -106,17 +106,17 @@ class polls extends CI_Controller {
 		}
 		else
 		{
-			$data1['answer'] = $this->input->post("answer_one");
+			$data1['answer'] = $this->input->post("answer_one",TRUE);
 			$id1=$this->input->post('a1_id');
 			$this->answer_model->set_answer($data1,$id1);
-			$data2['answer'] = $this->input->post("answer_two");
+			$data2['answer'] = $this->input->post("answer_two",TRUE);
 			$id2=$this->input->post('a2_id');
 			$this->answer_model->set_answer($data2,$id2);
-			$data3['answer'] = $this->input->post("answer_three");
+			$data3['answer'] = $this->input->post("answer_three",TRUE);
 			$id3=$this->input->post('a3_id');
 			$this->answer_model->set_answer($data3,$id3);
 				$data = array(
-					'question' => $this->input->post("question"),
+					'question' => $this->input->post("question",TRUE),
 					'answer_1' => $id1,
 					'answer_2' => $id2,
 					'answer_3' => $id3
@@ -124,7 +124,7 @@ class polls extends CI_Controller {
 				 $data['user_id']=$this->session->userdata('id');				
 				date_default_timezone_set('Asia/Kolkata');
 				$data['updated_at']= date("Y-m-d H:i:s");
-				$p_id=$this->input->post('p_id');
+				$p_id=$this->input->post('p_id',TRUE);
 				if($this->poll_model->set_poll($data,$p_id)){
 					$this->session->set_flashdata('msg','Successfully Edited');
 					redirect('admin');
@@ -167,7 +167,7 @@ class polls extends CI_Controller {
 		}	
 	}
 	public function vote($id){
-		$answer=$this->input->post('vote');
+		$answer=$this->input->post('vote',TRUE);
 		$poll=$this->poll_model->get_poll_by_id($id);
 		$a_id=$poll[$answer];		
 		$this->answer_model->vote($a_id);

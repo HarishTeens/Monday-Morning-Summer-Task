@@ -13,6 +13,11 @@ class reply_model extends CI_Model {
 		$query=$this->db->get_where('replies',array('comment_id'=>$id,'has_approved'=>1));
 		return $query;
 	}
+	function update_reply($reply,$id){
+		$this->db->set('Content', $reply); //value that used to update column  
+		$this->db->where('id', $id); //which row want to upgrade  
+		$this->db->update('replies');  //table name
+	}
 	function get_replies($id=0){
 		if($id==0){
 			$query=$this->db->get('replies');
@@ -21,6 +26,10 @@ class reply_model extends CI_Model {
 			$query=$this->db->get_where('replies',array('article_id'=>$id));
 			return $query;
 		}
+	}
+	function delete_reply($id){
+		$this->db->where('id',$id);
+		return $this->db->delete('replies');
 	}
 	function approve($id,$value){
 		$this->db->set('has_approved', $value); //value that used to update column  
