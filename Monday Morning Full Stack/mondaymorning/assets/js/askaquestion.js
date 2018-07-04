@@ -1,16 +1,15 @@
 $(".modal").each(function(l){$(this).on("show.bs.modal",function(l){var o=$(this).attr("data-easein");"shake"==o?$(".modal-dialog").velocity("callout."+o):"pulse"==o?$(".modal-dialog").velocity("callout."+o):"tada"==o?$(".modal-dialog").velocity("callout."+o):"flash"==o?$(".modal-dialog").velocity("callout."+o):"bounce"==o?$(".modal-dialog").velocity("callout."+o):"swing"==o?$(".modal-dialog").velocity("callout."+o):$(".modal-dialog").velocity("transition."+o)})});
 
 
-$(document).ready(function() {	
+
+$(document).ready(function() {
+	$('#flash').hide();
+	//$(".details").hide();	
 	$('#after-vote').hide();
-	update_votes();
-	$(".reply-section>form").hide();
-	$(".view-replies").show();
-	$(".replies").hide();
 	//se
 	load_data();
 	function on() {    
-	    $('#overlay').fadeIn();
+	    $('#overlay').fadeIn();	    
 	}
 
 	function off() {    
@@ -46,14 +45,10 @@ $(document).ready(function() {
 	
 });
 
-$( "#reply-btn" ).click(function() {
-  	var x=$(this).parent().children()[2];  	
-  	$(x).slideToggle(); 	
-});
-$( "#view-replies" ).click(function() {
-  	var x=$(this).parent().children()[4];  	
-  	$(x).slideToggle(); 	  	
-});
+
+
+
+
 
 
 
@@ -80,14 +75,13 @@ function update_votes(data=0){
 		var x=that.parent().children()[0].style.width=percentage
 			/*x.css('width',percentage+'%');*/;
 		
-	})
-	
-	
-		
+	})	
 
 }
 
-$('form.ajax').on('submit',function(){
+
+
+$('form.ajax1').on('submit',function(){
 	var that=$(this),
 		method=that.attr('method'),
 		url=that.attr('action'),
@@ -116,6 +110,35 @@ $('form.ajax').on('submit',function(){
 	})
 	return false;
 })
+
+
+$('form.ajax2').on('submit',function(){
+	var that=$(this),
+		method=that.attr('method'),
+		url=that.attr('action'),
+		data={};
+	that.find('input').each(function(){
+		var that=$(this),
+			value=that.val(),
+			name=that.attr('name');
+		data[name]=value;
+
+
+	});	
+	$.ajax({
+		url:url,
+		type:'ajax',
+		method:method,
+		data:data,
+		success: function(response){
+			$('#flash').html(response).slideDown();
+
+		}
+	});
+	return false;
+});
+
+
 
 
 

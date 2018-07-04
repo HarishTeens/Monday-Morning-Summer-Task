@@ -80,7 +80,7 @@
 		        <div class="modal-content">
 		            <div class="modal-header">                        
 		                <h4 class="modal-title">
-		                    <a href="#">Ask a Question</a>
+		                    <a href="<?php echo base_url('ask-a-question') ?>">Ask a Question</a>
 		                </h4>                        
 		            </div>
 		        </div>

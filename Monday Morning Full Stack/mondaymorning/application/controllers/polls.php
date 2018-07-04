@@ -15,7 +15,12 @@ class polls extends CI_Controller {
 		else
 		{
 			$data['user_id']=$this->session->userdata('id');
-			$data['username']=$this->session->userdata('username');
+			$data['username']=$this->session->userdata('username');			
+		}
+		$data['admin']=$this->user_model->get_user($data['user_id']);
+		if($data['admin']['access_level']!='admin'){
+			$this->session->set_flashdata('msg','You must be Admin to do that');
+			redirect('home');
 		}
 		$this->form_validation->set_rules('question','Poll Question','required|alpha_numeric_spaces');	
 		$this->form_validation->set_rules('answer_one','Answer One','required|alpha_numeric_spaces');			
@@ -62,6 +67,11 @@ class polls extends CI_Controller {
 			$data['user_id']=$this->session->userdata('id');
 			$data['username']=$this->session->userdata('username');			
 		}
+		$data['admin']=$this->user_model->get_user($data['user_id']);
+		if($data['admin']['access_level']!='admin'){
+			$this->session->set_flashdata('msg','You must be Admin to do that');
+			redirect('home');
+		}
 		$data['polls']=$this->poll_model->get_poll();
 		$this->load->view("polls/browse",$data);
 	}	
@@ -75,6 +85,11 @@ class polls extends CI_Controller {
 		{
 			$data['user_id']=$this->session->userdata('id');
 			$data['username']=$this->session->userdata('username');			
+		}
+		$data['admin']=$this->user_model->get_user($data['user_id']);
+		if($data['admin']['access_level']!='admin'){
+			$this->session->set_flashdata('msg','You must be Admin to do that');
+			redirect('home');
 		}
 		$id=$this->uri->segment(3);
         if (empty($id)) {
@@ -96,10 +111,10 @@ class polls extends CI_Controller {
 			$this->answer_model->set_answer($data1,$id1);
 			$data2['answer'] = $this->input->post("answer_two");
 			$id2=$this->input->post('a2_id');
-			$this->answer_model->set_answer($data1,$id1);
+			$this->answer_model->set_answer($data2,$id2);
 			$data3['answer'] = $this->input->post("answer_three");
 			$id3=$this->input->post('a3_id');
-			$this->answer_model->set_answer($data1,$id1);
+			$this->answer_model->set_answer($data3,$id3);
 				$data = array(
 					'question' => $this->input->post("question"),
 					'answer_1' => $id1,
@@ -133,6 +148,11 @@ class polls extends CI_Controller {
 		{
 			$data['user_id']=$this->session->userdata('id');
 			$data['username']=$this->session->userdata('username');			
+		}
+		$data['admin']=$this->user_model->get_user($data['user_id']);
+		if($data['admin']['access_level']!='admin'){
+			$this->session->set_flashdata('msg','You must be Admin to do that');
+			redirect('home');
 		}
 		$poll=$this->poll_model->get_poll_by_id($id);
 		$this->answer_model->delete($poll['answer_1']);

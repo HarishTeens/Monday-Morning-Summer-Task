@@ -54,15 +54,15 @@
 						</h3>
 						
 						    <div class="form-group animated bounceInLeft">						      
-						      <input type="text" name="answer_one" class="form-control" placeholder="Option +1" value="<?php echo $this->answer_model->get_answer($poll['answer_1']) ?>">
+						      <input type="text" name="answer_one" class="form-control" placeholder="Option +1" value="<?php echo $this->answer_model->get_answer($poll['answer_1'])['answer'] ?>">
 						    </div>		
 						    <input type="hidden" name="a1_id" value="<?php echo $poll['answer_1']; ?>">				    
 						    <div class="form-group animated bounceInLeft">						      
-						      <input type="text" name="answer_two" class="form-control" placeholder="Option 0" value="<?php echo $this->answer_model->get_answer($poll['answer_2']) ?>">
+						      <input type="text" name="answer_two" class="form-control" placeholder="Option 0" value="<?php echo $this->answer_model->get_answer($poll['answer_2'])['answer'] ?>">
 						    </div>	
 						    <input type="hidden" name="a2_id" value="<?php echo $poll['answer_2']; ?>">	    
 						    <div class="form-group animated bounceInLeft">						      
-						      <input type="text" name="answer_three" class="form-control" placeholder="Option -1" value="<?php echo $this->answer_model->get_answer($poll['answer_3']) ?>">
+						      <input type="text" name="answer_three" class="form-control" placeholder="Option -1" value="<?php echo $this->answer_model->get_answer($poll['answer_3'])['answer'] ?>">
 						    </div>						 
 						    <input type="hidden" name="a3_id" value="<?php echo $poll['answer_3']; ?>">				      
 						    <button type="submit" class="btn btn-lg btn-default animated wobble" id="add-poll">Edit Poll</button>
@@ -83,7 +83,7 @@
 		        <div class="modal-content">
 		            <div class="modal-header">                        
 		                <h4 class="modal-title">
-		                    <a href="#">Ask a Question</a>
+		                    <a href="<?php echo base_url('ask-a-question') ?>">Ask a Question</a>
 		                </h4>                        
 		            </div>
 		        </div>

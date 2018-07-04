@@ -88,9 +88,8 @@ $(document).ready(function(){
 	});	
 	$(".dropdown").hide();	
 })
-for (var i = 1; i <5; i++) {
-	if(i!=3)
-	{
+for (var i = 1; i <3; i++) {
+	
 		$("#part"+i+">.content").mouseover(function(){
 			var x=$(this).children()[1];	
 			x.className="dropdown animated active bounceInDown";
@@ -99,6 +98,6 @@ for (var i = 1; i <5; i++) {
 			var x=$(this).children()[1];	
 			x.className="dropdown animated active bounceOutUp";
 		})	
-	}	
+	
 }
 

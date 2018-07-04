@@ -17,7 +17,7 @@
 							<input type="text" name="search" placeholder="Search articles here">
 							<i class="fa fa-search"></i>						
 						</form>		
-						<h3 class="nav-items right-items"><a href="<?php echo base_url('admin') ?>">Admin Panel</a></h3>
+						
 						<h3 class="nav-items right-items"><a href="<?php echo base_url('users/login') ?>">Login</a></h3>
 					</div>	
 				</div>
@@ -88,7 +88,7 @@
 		        <div class="modal-content">
 		            <div class="modal-header">                        
 		                <h4 class="modal-title">
-		                    <a href="#">Ask a Question</a>
+		                    <a href="<?php echo base_url('ask-a-question') ?>">Ask a Question</a>
 		                </h4>                        
 		            </div>
 		        </div>

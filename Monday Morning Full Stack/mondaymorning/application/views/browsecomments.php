@@ -34,7 +34,7 @@
 				<h1 id="sideline">Raise your voice..!</h1>		
 			</div>			
 			<div class="body-section">
-				<ul class="articles" type="none">
+				<ul class="comments" type="none">
 					<?php foreach ($comments->result() as $row){ ?>
 					<li class="comment row">						
 							<h3 style="display: inline-block;">
@@ -104,7 +104,7 @@
 		        <div class="modal-content">
 		            <div class="modal-header">                        
 		                <h4 class="modal-title">
-		                    <a href="#">Ask a Question</a>
+		                    <a href="<?php echo base_url('ask-a-question') ?>">Ask a Question</a>
 		                </h4>                        
 		            </div>
 		        </div>

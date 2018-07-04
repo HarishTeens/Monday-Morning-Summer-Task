@@ -86,12 +86,9 @@
 				</div>
 				<div id="part4" class="animated">
 					<div class="content">
-						<button class="btn btn-default btn-lg">MM Includes</button>
-						<div class="dropdown animated">
-							<button class="btn btn-default btn-lg">Users</button>
-							<button class="btn btn-default btn-lg">Members</button>
-							<button class="btn btn-default btn-lg">Admins</button>
-						</div>	
+						<button class="btn btn-default btn-lg"><a href="<?php echo base_url('ask-a-question/browse') ?>" style="color: black;">Ask a Question</a></button>
+						<button class="btn btn-default btn-lg"><a href="<?php echo base_url('') ?>" style="color: black;">Forum</a></button>
+						
 					</div>					
 				</div>				
 			</div>
@@ -130,7 +127,7 @@
 		        <div class="modal-content">
 		            <div class="modal-header">                        
 		                <h4 class="modal-title">
-		                    <a href="#">Ask a Question</a>
+		                    <a href="<?php echo base_url('ask-a-question') ?>">Ask a Question</a>
 		                </h4>                        
 		            </div>
 		        </div>

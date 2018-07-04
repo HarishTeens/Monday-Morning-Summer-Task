@@ -73,7 +73,9 @@
 
 									<div class="row picks animated <?php if($i==0){echo 'flipInX active';} ?>">
 										<div class="col-md-6 thumbnail" >
-											<img src="<?php echo base_url("assets/img/uploads/").$row->Image ?>">	
+											<a  href="<?php echo base_url('articles/view/'.$row->slug) ;?>">
+												<img src="<?php echo base_url("assets/img/uploads/").$row->Image ?>">	
+											</a>
 										</div>										
 										<div class="col-md-6">
 											<h1><?php echo $row->Author; ?></h1>
@@ -213,7 +215,7 @@
 		        <div class="modal-content">
 		            <div class="modal-header">                        
 		                <h4 class="modal-title">
-		                    <a href="#">Ask a Question</a>
+		                    <a href="<?php echo base_url('ask-a-question') ?>">Ask a Question</a>
 		                </h4>                        
 		            </div>
 		        </div>

@@ -78,7 +78,7 @@ $(".article").mouseover(function(){
 
 
 $(".editors-pick> div:gt(0)").hide();
-setInterval(animo,4000);
+setInterval(animo,400000);
 
 function animo (){
 	$(".editors-pick>div:first")		

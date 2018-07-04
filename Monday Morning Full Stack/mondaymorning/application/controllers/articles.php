@@ -18,6 +18,11 @@ class articles extends CI_Controller {
 			$data['user_id']=$this->session->userdata('id');
 			$data['username']=$this->session->userdata('username');
 		}
+		$data['admin']=$this->user_model->get_user($data['user_id']);
+		if($data['admin']['access_level']!='admin'){
+			$this->session->set_flashdata('msg','You must be Admin to do that');
+			redirect('home');
+		}
 		$this->form_validation->set_rules('title','Post Title','required');	
 		//$this->form_validation->set_rules('category','Post Category','required');			
 		$this->form_validation->set_rules('author','Post Author','required');	
@@ -102,6 +107,7 @@ class articles extends CI_Controller {
 		}
 
 		$data['article']=$this->article_model->get_article($slug);
+		$data['poll']=$this->poll_model->last_poll();
 		$this->article_model->increment_views($data['article']['id']);
 		$data['comments']=$this->comment_model->get_comments_view($data['article']['id']);		
 		$this->load->view('articles/view',$data);
