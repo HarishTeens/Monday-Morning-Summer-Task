@@ -6,7 +6,7 @@
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
 		<link rel="stylesheet" type="text/css" href="<?php echo base_url("assets/cs/animate.css")?> ">
 		<link rel="stylesheet" type="text/css" href="<?php echo base_url("assets/cs/jquery.fullPage.css")?>">
-		<link rel="stylesheet" type="text/css" href="<?php echo base_url("assets/cs/askaquestion.css")?>">
+		<link rel="stylesheet" type="text/css" href="<?php echo base_url("assets/cs/forumview.css")?>">
 		<title>Monday Morning - The official student media body of NIT Rourkela</title>
 	</head>
 	<body data-spy="scroll" data-target="#myScrollspy" data-offset="0">
@@ -27,7 +27,7 @@
 								 	echo base_url('admin') ;
 								 }
 								 else{
-								 	echo "#";
+								 	echo '#';
 								 }
 							 ?>"
 							 >
@@ -44,7 +44,7 @@
 					</div>	
 				</div>
 		</nav>
-		<h1 style="color: green;"><?php echo $this->session->flashdata('msg'); ?></h1>
+		
 
 			<!-- COntainer main  -->
 
@@ -69,28 +69,64 @@
 				<div class="row">
 					<div class="col-md-9">
 						<h1 style="color: #0984e3;">
-							<b>ASK A QUESTION</b>
+							<b>DISCUSSION FORUM</b>
 						</h1>
-						<h2 id="flash">
+						<h1 style="color: green;"><?php echo $this->session->flashdata('msg'); ?></h1>
+							<button class="btn btn-primary" ><a style="color: white;" href="<?php echo base_url('forum'); ?>">Back to Threads</a></button>
+							<?php 
+								if(isset($username)){ ?>
+									<a style="color: white;" href="<?php echo base_url('forum/create'); ?>"><button class="btn btn-primary" >New Thread</button></a>
+							<?php 	} ?>
+							<h1 style="color: #0984e3; margin-top: 40px; font-size: 40px;"><b style="text-transform: uppercase;"><?php echo $thread['Title']; ?></b></h1>
+							<div class="threads">
+								<div class="row thread">								
+									<div class="col-md-3">
+										<div class="thumbnail">
+											<img src="<?php echo base_url('assets/img/test1.jpg') ?>" style="border-radius: 10px;">	
+										</div>
+										
+									</div>
+									<div class="col-md-9">
+										<h3 style="margin: 0px;"><?php echo $thread['username']; ?></h3>
+										<h5 style="opacity: 0.8; margin: 5px auto;"><?php echo $thread['updated_at']; ?></h5>
+										<h4 style="margin-top: 20px;"><?php echo $thread['Content']; ?></h4>
+									</div>
+								</div>	
+
+								<?php foreach ($replies->result() as $row) { ?>			
+								<hr>			<div class="row thread">							
+										<div class="col-md-3">
+											<div class="thumbnail">
+												<img src="<?php echo base_url('assets/img/test1.jpg') ?>" style="border-radius: 10px;">	
+											</div>
+											
+										</div>
+										<div class="col-md-9">
+											<h3 style="margin: 0px;"><?php echo $row->username; ?></h3>
+											<h5 style="opacity: 0.8; margin: 5px auto;"><?php echo $row->updated_at; ?></h5>
+											<h4 style="margin-top: 20px;"><?php echo $row->Content; ?></h4>
+										</div>
+									</div>		
+								<?php } ?>
+							</div>
+							<div class="reply-form" style="margin-top: 40px;">
+								<h1 style="color: #0984e3;">
+									<b>LEAVE A REPLY</b>
+								</h1>
+								<form action="<?php echo base_url('forum/reply/'.$thread['id'].'/'.$thread['slug']); ?>" method="POST">
+									<textarea placeholder="Type your reply here...." rows="10" name="reply"></textarea>
+									<input type="hidden" name="title" value="<?php echo $thread['Title']; ?>">
+									<?php if(isset($username)){ ?>
+									<button class="btn btn-primary btn-lg">Submit</button>
+									<?php } ?>
+								</form>		
+								<?php if(isset($username)==FALSE) { ?>
+									<a style="color: white;" href="<?php echo base_url('users/login') ?>"><button class="btn-lg btn btn-info">Login</button></a> to post Reply
+									<?php 	} ?>						
+							</div>
 							
-						</h2>
-						<div>
-							<h3>If you have any queries and you do not know how to reach the authorities - ask a question anonymously and we'll get you your answers.</h3>							
-							<form class="ajax2" action="<?php echo base_url('ask-a-question/ask'); ?>" method="POST">
-								<div class="form-group">
-									<label><h1><b>Your Question</b></h1></label>
-									<input class="form-control" type="text" name="question" placeholder="How Do I apply Medical Leave" required="true">	
-								</div>
-								<div class="form-group">
-									<label><h1><b>Authority You want to ask</b></h1></label>
-									<input class="form-control" type="text" name="authority" placeholder="For.eg Dean,Academci CO-ordinator,Faculty,Chief Warden" required="true">	
-								</div>
-								<div class="form-group">
-									<button class="btn" id="submit"><b>SUBMIT</b></button>
-								</div>
-							
-							</form>
-						</div>
+
+						
 
 					</div>
 					<div class="col-md-3 aside"  id="myScrollspy">
@@ -200,7 +236,7 @@
 		<script src='https://cdnjs.cloudflare.com/ajax/libs/velocity/1.2.2/velocity.min.js'></script>
 		<script src='https://cdnjs.cloudflare.com/ajax/libs/velocity/1.2.2/velocity.ui.min.js'></script>
 		<script type="text/javascript" src="<?php echo base_url("assets/js/jquery.fullPage.js")?>"></script>
-		<script  src="<?php echo base_url("assets/js/askaquestion.js")?>"></script>
+		<script  src="<?php echo base_url("assets/js/forumview.js")?>"></script>
 		<script type="text/javascript">
 			<?php 
 			$ip=$this->input->ip_address();

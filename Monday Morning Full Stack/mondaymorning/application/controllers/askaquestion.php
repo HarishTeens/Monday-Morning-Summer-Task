@@ -49,4 +49,28 @@ class askaquestion extends CI_Controller {
 		$data['questions']=$this->askaquestion_model->get_questions();
 		$this->load->view('askaquestion/browse',$data);
 	}
+	public function delete($id){
+		if(!$this->session->userdata('is_logged_in'))
+		{
+			$this->session->set_flashdata('msg','You must be logged in to do that');
+			redirect('users/login');
+		} 
+		else
+		{
+			$data['user_id']=$this->session->userdata('id');
+			$data['username']=$this->session->userdata('username');
+		}
+		$data['admin']=$this->user_model->get_user($data['user_id']);
+		if($data['admin']['access_level']!='admin'){
+			$this->session->set_flashdata('msg','You must be Admin to do that');
+			redirect('home');
+		}
+		if($this->askaquestion_model->delete($id)){
+			$this->session->set_flashdata('msg','Deleted Successfully');
+			redirect('ask-a-question/browse');
+		} else {
+			$this->session->set_flashdata('msg','Try again later');
+			redirect('ask-a-question/browse');
+		}
+	}
 }

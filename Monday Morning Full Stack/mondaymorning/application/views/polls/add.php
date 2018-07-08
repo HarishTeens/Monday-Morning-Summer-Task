@@ -89,7 +89,7 @@
 		        <div class="modal-content">
 		            <div class="modal-header">                                                
 		                <h4 class="modal-title">
-		                	<a href="#">Forum</a>
+		                	<a href="<?php echo base_url('forum') ?>">Forum</a>
 		                </h4>
 		            </div>
 		        </div>

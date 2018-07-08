@@ -8,4 +8,8 @@ class askaquestion_model extends CI_Model {
 	function get_questions(){
 		return $this->db->get('askaquestion');
 	}
+	function delete($id){
+		$this->db->where('id',$id);
+		return $this->db->delete('askaquestion');
+	}
 }

@@ -25,18 +25,19 @@ $(document).ready(function() {
 		})
 	}
 	$('#search-text').keyup(function(){
-	if($(this).val()){		
-		on();
-		var search=$(this).val();
-		if(search!=''){
-			load_data(search);
-		} else {
-			load_data();
-		}
-		
-		}
-	else{
-		off();		
-	}	
+		if($(this).val()){		
+			on();
+			var search=$(this).val();
+			if(search!=''){
+				load_data(search);
+			} else {
+				load_data();
+			}
+			
+			}
+		else{
+			off();		
+		}	
+	});
 });
 	

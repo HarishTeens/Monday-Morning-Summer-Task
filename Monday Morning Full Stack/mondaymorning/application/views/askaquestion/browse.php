@@ -26,8 +26,9 @@
 		</nav>
 
 <!-- header ends -->
-
+		
 		<div class="container">
+			<h1 style="color: red;"><?php echo $this->session->flashdata('msg'); ?></h1>
 			<div class="heading">
 				<img src="<?php echo base_url('assets/img/logo.png');?>" id="logo">
 				<h1>Monday Morning </h1>
@@ -37,11 +38,13 @@
 				<ul class="questions" type="none">
 					<?php foreach ($questions->result() as $row){ ?>
 					<li class="question row">						
-							<h3 style="display: inline-block;">
+						<a href="<?php echo base_url('askaquestion/delete/'.$row->id); ?>" onclick="return confirm('Are you sure you want to delete')" ><i id="close-btn" class="far fa-window-close"></i></a>
+							<h3 style="display: inline; line-height: 2;">
 								<b><?php echo $row->question; ?></b>
 								to 
 								<b><?php echo $row->authority ?></b>
-							 </h3>							 
+							 </h3>	
+
 					</li>
 					<?php } ?>					
 				</ul>				
@@ -90,7 +93,7 @@
 		        <div class="modal-content">
 		            <div class="modal-header">                                                
 		                <h4 class="modal-title">
-		                	<a href="#">Forum</a>
+		                	<a href="<?php echo base_url('forum') ?>">Forum</a>
 		                </h4>
 		            </div>
 		        </div>

@@ -87,7 +87,7 @@
 				<div id="part4" class="animated">
 					<div class="content">
 						<button class="btn btn-default btn-lg"><a href="<?php echo base_url('ask-a-question/browse') ?>" style="color: black;">Ask a Question</a></button>
-						<button class="btn btn-default btn-lg"><a href="<?php echo base_url('') ?>" style="color: black;">Forum</a></button>
+						<button class="btn btn-default btn-lg"><a href="<?php echo base_url('forum/browse') ?>" style="color: black;">Forum</a></button>
 						
 					</div>					
 				</div>				
@@ -136,7 +136,7 @@
 		        <div class="modal-content">
 		            <div class="modal-header">                                                
 		                <h4 class="modal-title">
-		                	<a href="#">Forum</a>
+		                	<a href="<?php echo base_url('forum') ?>">Forum</a>
 		                </h4>
 		            </div>
 		        </div>

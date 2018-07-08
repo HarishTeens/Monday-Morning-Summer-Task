@@ -6,7 +6,7 @@
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
 		<link rel="stylesheet" type="text/css" href="<?php echo base_url("assets/cs/animate.css")?> ">
 		<link rel="stylesheet" type="text/css" href="<?php echo base_url("assets/cs/jquery.fullPage.css")?>">
-		<link rel="stylesheet" type="text/css" href="<?php echo base_url("assets/cs/askaquestion.css")?>">
+		<link rel="stylesheet" type="text/css" href="<?php echo base_url("assets/cs/forumindex.css")?>">
 		<title>Monday Morning - The official student media body of NIT Rourkela</title>
 	</head>
 	<body data-spy="scroll" data-target="#myScrollspy" data-offset="0">
@@ -27,7 +27,7 @@
 								 	echo base_url('admin') ;
 								 }
 								 else{
-								 	echo "#";
+								 	echo '#';
 								 }
 							 ?>"
 							 >
@@ -44,7 +44,7 @@
 					</div>	
 				</div>
 		</nav>
-		<h1 style="color: green;"><?php echo $this->session->flashdata('msg'); ?></h1>
+		
 
 			<!-- COntainer main  -->
 
@@ -69,28 +69,42 @@
 				<div class="row">
 					<div class="col-md-9">
 						<h1 style="color: #0984e3;">
-							<b>ASK A QUESTION</b>
+							<b>DISCUSSION FORUM</b>
 						</h1>
-						<h2 id="flash">
-							
-						</h2>
-						<div>
-							<h3>If you have any queries and you do not know how to reach the authorities - ask a question anonymously and we'll get you your answers.</h3>							
-							<form class="ajax2" action="<?php echo base_url('ask-a-question/ask'); ?>" method="POST">
-								<div class="form-group">
-									<label><h1><b>Your Question</b></h1></label>
-									<input class="form-control" type="text" name="question" placeholder="How Do I apply Medical Leave" required="true">	
-								</div>
-								<div class="form-group">
-									<label><h1><b>Authority You want to ask</b></h1></label>
-									<input class="form-control" type="text" name="authority" placeholder="For.eg Dean,Academci CO-ordinator,Faculty,Chief Warden" required="true">	
-								</div>
-								<div class="form-group">
-									<button class="btn" id="submit"><b>SUBMIT</b></button>
-								</div>
-							
-							</form>
-						</div>
+						<h1 style="color: green;"><?php echo $this->session->flashdata('msg'); ?></h1>
+						
+							<?php 
+								if(isset($username)){ ?>
+									<button class="btn btn-primary" ><a style="color: white;" href="<?php echo base_url('forum/create'); ?>">New Thread</a></button>
+							<?php 	} else { ?>
+									<a style="color: white;" href="<?php echo base_url('users/login') ?>"><button class="btn btn-info">Login</button></a> to Add New Thread
+							<?php 	} ?>
+							<table class="threads">
+								<tr >
+									<th ><h3><b>Title</b></h3></th>
+									<th ><h3><b>Replies</b></h3></th>							
+									<th ><h3><b>Hits</b></h3></th>	
+									<th ><h3><b>Last Reply</b></h3></th>
+								</tr>
+
+								<?php 
+									if($threads->num_rows()>0){
+								foreach($threads->result() as $row){ ?>
+								<tr class="thread">
+									<td><h3><a style="color: white;" href="<?php echo base_url('forum/view/'.$row->slug); ?>"><?php echo $row->Title; ?></a></h3>
+										<h5 style="opacity: 0.8;">Started by <b><?php echo $row->username?></b> at <?php echo $row->updated_at; ?></h5>
+									</td>
+									<td><h3><?php echo 'ha' ;?></h3></td>
+									<td><h3><?php echo $row->view_count; ?></h3></td>
+									<td><h3><?php echo 'ha'; ?></h3></td>
+								</tr>
+								<?php }} else { ?>
+									<tr>
+										<td colspan="4"><h1 style="text-align: center;">Nothing to Show</h1></td>	
+									</tr>
+								<?php } ?>
+							</table>
+						
 
 					</div>
 					<div class="col-md-3 aside"  id="myScrollspy">
@@ -200,7 +214,7 @@
 		<script src='https://cdnjs.cloudflare.com/ajax/libs/velocity/1.2.2/velocity.min.js'></script>
 		<script src='https://cdnjs.cloudflare.com/ajax/libs/velocity/1.2.2/velocity.ui.min.js'></script>
 		<script type="text/javascript" src="<?php echo base_url("assets/js/jquery.fullPage.js")?>"></script>
-		<script  src="<?php echo base_url("assets/js/askaquestion.js")?>"></script>
+		<script  src="<?php echo base_url("assets/js/forumindex.js")?>"></script>
 		<script type="text/javascript">
 			<?php 
 			$ip=$this->input->ip_address();

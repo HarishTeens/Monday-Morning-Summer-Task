@@ -105,11 +105,15 @@ body{
 .sidebar>h3>a{
 	color: #2d3436;
 }
-.question{
+.comment{
 	background: #ffeaa7;
 	color: #2d3436;
 	margin: 20px auto;
 	padding: 10px;
+	opacity: 0.8;
+}
+.comment:hover{
+	opacity: 1;
 }
 #close-btn{
 	color: red;

@@ -69,26 +69,26 @@
 				<div class="row">
 					<div class="col-md-9">
 						<h1 style="color: #0984e3;">
-							<b>ASK A QUESTION</b>
+							<b>DISCUSSION FORUM</b>
 						</h1>
 						<h2 id="flash">
 							
 						</h2>
 						<div>
-							<h3>If you have any queries and you do not know how to reach the authorities - ask a question anonymously and we'll get you your answers.</h3>							
-							<form class="ajax2" action="<?php echo base_url('ask-a-question/ask'); ?>" method="POST">
+							<button class="btn btn-primary"><a style="color: white;" href="<?php echo base_url(
+							'forum') ?>">Back to Threads</a></button>
+							<form action="<?php echo base_url('forum/create') ?>" method="POST">
 								<div class="form-group">
-									<label><h1><b>Your Question</b></h1></label>
-									<input class="form-control" type="text" name="question" placeholder="How Do I apply Medical Leave" required="true">	
+									<label><h1><b style="color: #0984e3; ">Topic</b></h1></label>
+									<input type="text" name="title" placeholder="Give a Title to this New Thread" class="form-control">
 								</div>
 								<div class="form-group">
-									<label><h1><b>Authority You want to ask</b></h1></label>
-									<input class="form-control" type="text" name="authority" placeholder="For.eg Dean,Academci CO-ordinator,Faculty,Chief Warden" required="true">	
+									<label><h1><b style="color: #0984e3; ">Description</b></h1></label>
+									<input type="text" name="content" placeholder="Description goes here" class="form-control">
 								</div>
 								<div class="form-group">
-									<button class="btn" id="submit"><b>SUBMIT</b></button>
+									<button class="btn btn-primary btn-lg" style="color: #0984e3;color: white; margin-top: 20px;"><b>Submit</b></button>
 								</div>
-							
 							</form>
 						</div>
 
@@ -238,3 +238,4 @@
 
 	</body>
 </html>
+	
